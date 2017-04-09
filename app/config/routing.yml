@@ -1,0 +1,8 @@
+erp:
+    resource: "@ErpBundle/Resources/config/routing.yml"
+    prefix:   /
+
+api:
+    type: rest
+    resource: "routing_api.yml"
+
