@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}promo-vert{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="//cdn.webix.com/edge/webix.css" type="text/css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href=" {{ asset('css/view.css') }}">
+    {% endblock %}
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="{{ path('erp_homepage') }}">HOME</a>
+    <ul class="nav navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Trials <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Protocols</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Planning</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">PGE</a>
+        </li>
+    </ul>
+</nav>
+
+{{ dump() }}
+<h1>HELLO WORLD</h1>
+
+<div class="container main">
+
+    <div class="row" id="infos-and-map">
+        <div class="col">
+            <div class="header flex" id="first-header">
+                <h4>Main Information</h4>
+            </div>
+            <div class="row">
+                <div class="col-md-8" id="infos">
+
+                    <div class="field-groups">
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Protocol:</div>
+                            <div class="value">17E FCUISK B01</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">code:</div>
+                            <div class="value">17E FCUISK SP01</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Sponsor:</div>
+                            <div class="value">ISK BIOSCIENCES</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Country:</div>
+                            <div class="value">Spain</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Responsible:</div>
+                            <div class="value">Marcos Lora</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Technician:</div>
+                            <div class="value">Raúl cozano</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">State:</div>
+                            <div class="value">Pendiente de Comienzo</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Experimental Product:</div>
+                            <div class="value">IBE 4022</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Kind of Trial:</div>
+                            <div class="value">F-Fungicide</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Crop:</div>
+                            <div class="value">CU-CUCURBITS</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Setting date:</div>
+                            <div class="value">17/01/2017</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Country of Trial:</div>
+                            <div class="value">Spain</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">CRO:</div>
+                            <div class="value"></div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Effective Date:</div>
+                            <div class="value">21/03/2017</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Confirmado CRO:</div>
+                            <div class="value">NO</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Quotation confirmed:</div>
+                            <div class="value">NO</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Invoiced First 50%:</div>
+                            <div class="value">YES</div>
+                        </div>
+                        <div class="field-grou d-flex justify-content-betweenp">
+                            <div class="field">Farmer compensation:</div>
+                            <div class="value">600</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Area/Village:</div>
+                            <div class="value"></div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Poligon:</div>
+                            <div class="value"></div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Parcela:</div>
+                            <div class="value"></div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Anex V:</div>
+                            <div class="value">NO</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Prevision for Starting Date:</div>
+                            <div class="value"></div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Prevision for Finish Date:</div>
+                            <div class="value"></div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Estimated date for Draft:</div>
+                            <div class="value"></div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Date to send Draft:</div>
+                            <div class="value"></div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Report available:</div>
+                            <div class="value">NO</div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Date Report sent:</div>
+                            <div class="value"></div>
+                        </div>
+                        <div class="field-group d-flex justify-content-between">
+                            <div class="field">Final Report Shippment confirmed:</div>
+                            <div class="value">NO</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" id="map">
+                    <div class="trial-location">
+                        <iframe
+                                width="100%"
+                                height="450"
+                                frameborder="0"
+                                style="border:0"
+                                src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJnY3tlZhy5kcRcnujmyShlUc&key=AIzaSyD5Wgt4AW-Nxx_f_85uiawBlF6FOXk84Qs"
+                                allowfullscreen></iframe>
+                    </div>
+
+                    <div class="coordinates d-flex">
+                        <div class="form-group row">
+                            <label for="longitude" class="col-sm-3 col-form-label">longitude</label>
+                            <div class="col">
+                                <input type="text" class="form-control col-sm-10" id="longitude" placeholder=".col-2">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="latitude" class="col-sm-3 col-form-label" id="mc">Latitude</label>
+                            <div class="col">
+                                <input type="text" class="form-control col-sm-10" id="latitude" placeholder=".col-2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="interventions">
+        <div class="col">
+            <div class="header flex">
+                <h4>Interventions</h4>
+
+            </div>
+            <div id="testA"></div>
+        </div>
+    </div>
+
+    <div class="row" id="files">
+        <div class="col">
+            <div class="header flex">
+                <h4>Files</h4>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="arm-file">
+                        <div class="last">
+                            <h5>Last ARM File (read only)</h5>
+                            <ul class="d-flex">
+                                <li>armfile.arm</li>
+                                <li>12/12/2012</li>
+                                <li><i class="fa fa-download" aria-hidden="true"></i></li>
+                            </ul>
+                        </div>
+                        <div class="current">
+                            <h5>Current ARM File (read only)</h5>
+                            <ul class="d-flex">
+                                <li>armfile.arm</li>
+                                <li>12/12/2012</li>
+                                <li><i class="fa fa-download" aria-hidden="true"></i></li>
+                            </ul>
+                        </div>
+                        {#Ici on insère le form pour l'upload des fichiers arm#}
+                        <div class="upload-form">
+                            <label class="control-label">Upload ARM File</label>
+                            <input type="file" class="filestyle" data-icon="false">
+                        </div>
+                    </div>
+                    <div class="protocole">
+                        <h5>Protocoles</h5>
+                        <div class="protocoles-list">
+                            <ul class="d-flex">
+                                <li>protocoleV2.pdf</li>
+                                <li>12/12/2012</li>
+                                <li><i class="fa fa-download" aria-hidden="true"></i></li>
+                            </ul>
+                            <ul class="d-flex">
+                                <li>protocoleV1.pdf</li>
+                                <li>12/12/2012</li>
+                                <li><i class="fa fa-download" aria-hidden="true"></i></li>
+                            </ul>
+                            {#Ici on insère le form pour l'upload des fichiers protocoles #}
+                            <div class="upload-form">
+                                <label class="control-label">Upload protocol File</label>
+                                <input type="file" class="filestyle" data-icon="false">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="photos">
+                        <img src="{{ asset('images/0Tl5jg2.jpg') }}" alt="" class="img-thumbnail">
+                        <img src="{{ asset('images/0Tl5jg2.jpg') }}" alt="" class="img-thumbnail">
+                        <img src="{{ asset('images/0Tl5jg2.jpg') }}" alt="" class="img-thumbnail">
+                        <img src="{{ asset('images/0Tl5jg2.jpg') }}" alt="" class="img-thumbnail">
+                        <img src="{{ asset('images/0Tl5jg2.jpg') }}" alt="" class="img-thumbnail">
+                        <img src="{{ asset('images/0Tl5jg2.jpg') }}" alt="" class="img-thumbnail">
+                        <img src="{{ asset('images/0Tl5jg2.jpg') }}" alt="" class="img-thumbnail">
+                        <img src="{{ asset('images/0Tl5jg2.jpg') }}" alt="" class="img-thumbnail">
+                        <img src="{{ asset('images/0Tl5jg2.jpg') }}" alt="" class="img-thumbnail">
+                    </div>
+                    {#Ici on insère le form pour l'upload des fichiers images #}
+                    <div class="upload-form form-group">
+                        {{ form(form) }}
+                        {#{{ dump(form) }}
+                        {{ form_widget(form.imageFile, {'attr': {'class': 'btn btn-primary'}}) }}
+                        {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}#}
+                        {#{{ form_start(form) }}
+                        {{ form_errors(form) }}
+                        {{ form_widget(form.imageFile) }}
+                        #}{#{{ form_label(form.imageFile, 'Your Name', {'label_attr': {'class': 'test'}}) }}#}{#
+                        {{ form_row(form.save, { 'label': 'Submit me' }) }}
+                        {{ form_end(form) }}#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="discussion">
+        <div class="col">
+            <div class="header flex">
+                <h4>Discussion</h4>
+
+            </div>
+            <div class="row">
+                <div class="col" id="with-technicians">
+                    <div class="message-container">
+                        <ul class="message-list">
+                            <li class="message">
+                                <div class="message-box">
+                                    <div class="message-head">
+                                        <span class="message-name by-author">Jon Doe</span>
+                                        <span>10 minutes ago</span>
+                                    </div>
+                                    <div class="message-content">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et
+                                        iure
+                                        laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="message">
+                                <div class="message-box message-2">
+                                    <div class="message-head">
+                                        <span class="message-name by-author">Jon Doe</span>
+                                        <span>10 minutes ago</span>
+                                    </div>
+                                    <div class="message-content">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et
+                                        iure
+                                        laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="message">
+                                <div class="message-box">
+                                    <div class="message-head">
+                                        <span class="message-name by-author">Jon Doe</span>
+                                        <span>10 minutes ago</span>
+                                    </div>
+                                    <div class="message-content">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et
+                                        iure
+                                        laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleTextarea1">Example textarea</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="3"></textarea>
+                        <input class="btn btn-primary" type="submit" value="Submit">
+                    </div>
+                </div>
+                <div class="col" id="with-sponsor">
+                    <div class="message-container">
+                        <ul class="message-list">
+                            <li class="message">
+                                <div class="message-box">
+                                    <div class="message-head">
+                                        <span class="message-name by-author">Jon Doe</span>
+                                        <span>10 minutes ago</span>
+                                    </div>
+                                    <div class="message-content">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et
+                                        iure
+                                        laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="message">
+                                <div class="message-box message-2">
+                                    <div class="message-head">
+                                        <span class="message-name by-author">Jon Doe</span>
+                                        <span>10 minutes ago</span>
+                                    </div>
+                                    <div class="message-content">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et
+                                        iure
+                                        laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="message">
+                                <div class="message-box">
+                                    <div class="message-head">
+                                        <span class="message-name by-author">Jon Doe</span>
+                                        <span>10 minutes ago</span>
+                                    </div>
+                                    <div class="message-content">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et
+                                        iure
+                                        laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleTextarea">Example textarea</label>
+                        <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                        <input class="btn btn-primary" type="submit" value="Submit">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+    <p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
+</footer>
+
+
+{% block javascripts %}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="//cdn.webix.com/edge/webix.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    var excelexport = {
+        view: "form",
+        css: "toolbar",
+        paddingY: 5,
+        paddingX: 10,
+        cols: [
+            {
+                view: "button", value: "Add row", width: 120, click: function () {
+                $$('dtable').add({
+                    id: 800,
+                });
+            }
+            },
+
+            {
+                view: "button", value: "Delete row", width: 120, click: function () {
+                var id = $$('dtable').getSelectedId();
+                if (id)
+                    $$('dtable').remove(id);
+            }
+            },
+
+
+            {
+                view: "button", value: "Export to PDF", autowidth: true, click: function () {
+                webix.toPDF($$("dtable"), {
+                    autowidth: true,
+                });
+            }
+            },
+            {
+                view: "button", label: "Export to Excel", width: 120, click: function () {
+                webix.toExcel($$("dtable"));
+            }
+            }
+        ]
+
+    };
+    var griddef = {
+        view: "datatable",
+        columns: [
+            {id: "rank", editor: "text", header: "", css: "rank", width: 50},
+            {id: "title", editor: "text", header: "Film title", width: 200},
+            {id: "year", editor: "text", header: "Released", width: 80},
+            {id: "votes", editor: "text", header: "Votes", width: 100},
+            {id: "title2", editor: "text", header: "Film title", width: 200},
+            {id: "title3", editor: "text", header: "Film title", width: 200},
+            {id: "title4", editor: "text", header: "Film title", width: 200},
+            {id: "title5", editor: "text", header: "Film title", width: 200},
+            {id: "title6", editor: "text", header: "Film title", width: 200},
+        ],
+
+        data: [
+            {
+                id: 1,
+                title: "The Shawshank Redemption",
+                year: 1994,
+                votes: 678790,
+                rating: 9.2,
+                rank: 1,
+                title2: "azeazee",
+                title3: "azeazee",
+                title4: "azeazee",
+                title5: "azeazee",
+                title6: "azeazee",
+            },
+            {
+                id: 2,
+                title: "The Godfather",
+                year: 1972,
+                votes: 511495,
+                rating: 9.2,
+                rank: 2,
+                title2: "azeazee",
+                title3: "azeazee",
+                title4: "azeazee",
+                title5: "azeazee",
+                title6: "azeazee",
+            },
+            {
+                id: 3,
+                title: "The Shawshank Redemption",
+                year: 1994,
+                votes: 678790,
+                rating: 9.2,
+                rank: 3,
+                title2: "azeazee",
+                title3: "azeazee",
+                title4: "azeazee",
+                title5: "azeazee",
+                title6: "azeazee",
+            },
+            {
+                id: 4,
+                title: "The Shawshank Redemption",
+                year: 1994,
+                votes: 678790,
+                rating: 9.2,
+                rank: 4,
+                title2: "azeazee",
+                title3: "azeazee",
+                title4: "azeazee",
+                title5: "azeazee",
+                title6: "azeazee",
+            },
+            {
+                id: 5,
+                title: "The Shawshank Redemption",
+                year: 1994,
+                votes: 678790,
+                rating: 9.2,
+                rank: 5,
+                title2: "azeazee",
+                title3: "azeazee",
+                title4: "azeazee",
+                title5: "azeazee",
+                title6: "azeazee",
+            },
+            {
+                id: 6,
+                title: "The Shawshank Redemption",
+                year: 1994,
+                votes: 678790,
+                rating: 9.2,
+                rank: 6,
+                title2: "azeazee",
+                title3: "azeazee",
+                title4: "azeazee",
+                title5: "azeazee",
+                title6: "azeazee",
+            },
+            {
+                id: 7,
+                title: "The Shawshank Redemption",
+                year: 1994,
+                votes: 678790,
+                rating: 9.2,
+                rank: 7,
+                title2: "azeazee",
+                title3: "azeazee",
+                title4: "azeazee",
+                title5: "azeazee",
+                title6: "azeazee",
+            },
+        ],
+
+        editable: true,
+        autoheight: true,
+        autowidth: true,
+    };
+    webix.ready(function () {
+        grid = webix.ui({
+            container: "testA",
+            rows: [griddef, excelexport],
+
+        });
+    });
+</script>
+
+{% endblock %}
+
+</body>
+</html>

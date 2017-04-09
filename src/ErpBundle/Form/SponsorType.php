@@ -13,7 +13,17 @@ class SponsorType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('sponsorCode')->add('name')->add('city')->add('zipCode')->add('address')->add('country')->add('phoneNumber')->add('email')->add('creationDate')        ;
+        $builder
+            ->add('sponsorCode')
+            ->add('name')
+            ->add('city')
+            ->add('zipCode')
+            ->add('address')
+            ->add('country')
+            ->add('phoneNumber')
+            ->add('email')
+            ->add('creationDate')
+        ;
     }
     
     /**

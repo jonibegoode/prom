@@ -6,146 +6,176 @@
     <script src="http://cdn.webix.com/edge/webix.js" type="text/javascript"></script>
 </head>
 <body>
-<div class='header_comment'>Multi-column selection</div>
-<div class='sample_comment'>Click on any cell to select the releted column.</div>
-<div class='sample_comment'>Use ctrl-click and shift-click to select multiple columns.</div>
-<div id="testA"></div>
-<hr>
-<div id="testB" class='sample_comment'></div>
 
-<div class='header_comment'>Loading</div>
-<div id='testA'></div>
+Bonjour {{ app.user.username }}
+<a href="{{ path('erp_homepage') }}">accueil</a>
+<a href="{{ path('fos_user_security_logout') }}">logout</a>
+
+<hr>
+
+<div id="testA"></div>
 
 <script type="text/javascript" charset="utf-8">
+    var searchbar = {
+        view: "text",
+        placeholder: "Type something to filter the grid",
+        on: {
+            onTimedKeyPress: function () {
+                var text = this.getValue().toLowerCase();
+                var table = $$("dtable");
+                var columns = table.config.columns;
+                table.filter(function (obj) {
+                    for (var i = 0; i < columns.length; i++)
+                        if (obj[columns[i].id].toString().toLowerCase().indexOf(text) !== -1) return true;
+                    return false;
+                })
+            }
+        }
+    };
+    var griddef = {
+        view: "datatable",
+        id: "dtable",
+        columns: [
+            {
+                id: "id",
+                editor: "text",
+                header: ["id",
+                    {content: "textFilter"}],
+                width: 50,
+                sort: "int"
+            },
+            {
+                id: "sponsor_code",
+                editor: "text",
+                header: ["Code", {content: "textFilter"}],
+                width: 80,
+                sort: "string"
+            },
+            {
+                id: "name",
+                editor: "text",
+                header: ["Sponsor Name", {content: "textFilter"}],
+                width: 300,
+                sort: "string"
+            },
+            {
+                id: "zip_code",
+                editor: "text",
+                header: ["Zip Code", {content: "textFilter"}],
+                width: 80,
+                sort: "int"
+            },
+            {
+                id: "address",
+                editor: "text",
+                header: ["Address", {content: "textFilter"}],
+                width: 200,
+                sort: "string"
+            },
+            {
+                id: "country",
+                editor: "text",
+                header: ["Country", {content: "selectFilter"}],
+                width: 200,
+                sort: "string"
+            },
+            {
+                id: "city",
+                editor: "text",
+                header: ["city", {content: "textFilter"}],
+                width: 100,
+                sort: "string"
+            },
+            {
+                id: "phone_number",
+                editor: "text",
+                header: ["Phone Number", {content: "textFilter"}],
+                width: 100,
+                sort: "int"
+            },
+            {
+                id: "email",
+                editor: "text",
+                header: ["Email", {content: "textFilter"}],
+                width: 200,
+                sort: "string"
+            }
+        ],
+
+        editable: true,
+        select: "cell",
+        navigation: true,
+
+        autoheight: true,
+        autowidth: true,
+        scroll: "y",
+
+        save: "rest->{{ path('api_post') }}",
+        url: "rest->{{ path('erp_api_cgetload') }}"
+
+    };
+    var excelexport = {
+        view: "form",
+        css: "toolbar",
+        paddingY: 5,
+        paddingX: 10,
+        cols: [
+            {
+                view: "label", label: "Export"
+            },
+
+            {
+                view: "button", value: "Add row", click: function(){
+                    $$('dtable').add({
+                        id:800,
+                    });
+            }
+            },
+
+            {
+                view: "button", value: "Delete row", click: function(){
+                var id = $$('dtable').getSelectedId();
+                if (id)
+                    $$('dtable').remove(id);
+            }
+            },
+
+
+            {
+                view: "button", value: "Export to PDF", autowidth: true, click: function () {
+                webix.toPDF($$("dtable"), {
+                    autowidth: true,
+                });
+            }
+            },
+            {
+                view: "button", label: "Export to Excel", width: 120, click: function () {
+                webix.toExcel($$("dtable"));
+            }
+            },
+            {
+                view: "button", label: "'id' and 'name'", width: 140, click: function () {
+                webix.toExcel($$("dtable"), {
+                    filename: "dtable",
+                    name: "sponsors",
+                    columns: {
+                        "id": {header: "id", width: 50},
+                        "name": {header: "name", width: 200}
+                    }
+                });
+            }
+            }
+        ]
+
+    };
 
     webix.ready(function () {
-
         grida = webix.ui({
-
-            rows: [
-                {
-                    view: "text",
-                    placeholder: "Type something to filter the grid",
-                    on: {
-                        onTimedKeyPress: function () {
-                            var text = this.getValue().toLowerCase();
-                            var table = $$("dtable");
-                            var columns = table.config.columns;
-                            table.filter(function (obj) {
-                                for (var i = 0; i < columns.length; i++)
-                                    if (obj[columns[i].id].toString().toLowerCase().indexOf(text) !== -1) return true;
-                                return false;
-                            })
-                        }
-                    }
-                },
-
-                {
-                    id: "dtable",
-                    container: "testA",
-                    view: "datatable",
-                    columns: [
-                        {id: "id", editor: "text", header: ["id", {content: "textFilter"}], width: 50, sort: "int"},
-                        {
-                            id: "sponsor_code",
-                            editor: "text",
-                            header: ["Code", {content: "textFilter"}],
-                            width: 80,
-                            sort: "string"
-                        },
-                        {
-                            id: "name",
-                            editor: "text",
-                            header: ["Sponsor Name", {content: "textFilter"}],
-                            width: 300,
-                            sort: "string"
-                        },
-                        {
-                            id: "zip_code",
-                            editor: "text",
-                            header: ["Zip Code", {content: "textFilter"}],
-                            width: 80,
-                            sort: "int"
-                        },
-                        {
-                            id: "address",
-                            editor: "text",
-                            header: ["Address", {content: "textFilter"}],
-                            width: 200,
-                            sort: "string"
-                        },
-                        {
-                            id: "country",
-                            editor: "text",
-                            header: ["Country", {content: "selectFilter"}],
-                            width: 200,
-                            sort: "string"
-                        },
-                        {
-                            id: "city",
-                            editor: "text",
-                            header: ["city", {content: "textFilter"}],
-                            width: 100,
-                            sort: "string"
-                        },
-                        {
-                            id: "phone_number",
-                            editor: "text",
-                            header: ["Phone Number", {content: "textFilter"}],
-                            width: 100,
-                            sort: "int"
-                        },
-                        {
-                            id: "email",
-                            editor: "text",
-                            header: ["Email", {content: "textFilter"}],
-                            width: 200,
-                            sort: "string"
-                        },
-                    ],
-
-                    editable: true,
-                    autoheight: true,
-                    autowidth: true,
-                    scroll: "y",
-
-                    url: "rest->{{ path('get_apis_load') }}"
-
-                },
-                {
-                    view: "form",
-                    css: "toolbar",
-                    paddingY: 5,
-                    paddingX: 10,
-                    cols: [
-                        {
-                            view: "label", label: "Export"
-                        },
-                        {
-                            view: "button", label: "All Fields", width: 95, click: function () {
-                            webix.toExcel($$("dtable"));
-                        }
-                        },
-                        {
-                            view: "button", label: "'id' and 'name'", width: 140, click: function () {
-                            webix.toExcel($$("dtable"), {
-                                filename: "dtable",
-                                name: "sponsors",
-                                columns: {
-                                    "id": {header: "id", width: 50},
-                                    "name": {header: "name", width: 200}
-                                }
-                            });
-                        }
-                        }
-                    ]
-
-                }
-            ]
-
-
+            container: 'testA',
+            rows: [searchbar, excelexport, griddef],
         });
     });
 </script>
+
 </body>
 </html>

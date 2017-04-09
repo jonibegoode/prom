@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}promo-vert{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        {% stylesheets 'bundles/erp/css/style.css' filter="cssrewrite" %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+        {% endstylesheets %}
+    {% endblock %}
+</head>
+
+<body>
+
+<h1>promo.<span id="green">vert</span></h1>
+
+
+<div id="custom-search-input">
+    <div class="input-group col-md-12">
+        <input type="text" class="search-query form-control" placeholder="Search"/>
+        <span class="input-group-btn">
+            <button class="btn btn-danger" type="button">
+                <span class=" glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+    </div>
+</div>
+
+<div class="main">
+    <div class="wrap">
+        <i class="fa fa-list-alt fa-9x" aria-hidden="true"></i>
+        <p><a href="{{ path('erp_trial_demo') }}">Trials</a></p>
+    </div>
+    <div class="wrap">
+        <i class="fa fa-list fa-9x" aria-hidden="true"></i>
+        <p>Protocols</p>
+    </div>
+    <div class="wrap">
+            <i class="fa fa-address-card-o fa-9x" aria-hidden="true"></i>
+            <p><a href="{{ path('erp_sponsors') }}">Sponsors</a></p>
+    </div>
+    <div class="wrap">
+        <i class="fa fa-table fa-9x" aria-hidden="true"></i>
+        <p>PGE</p>
+    </div>
+    <div class="wrap">
+
+        <i class="fa fa-calendar fa-9x" aria-hidden="true"></i>
+        <p>Planning</p>
+    </div>
+    <div class="wrap">
+        <i class="fa fa-list fa-9x" aria-hidden="true"></i>
+        <p>Other</p>
+    </div>
+</div>
+
+
+<footer>
+    <p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
+</footer>
+</div>
+
+{% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% endblock %}
+
+</body>
+</html>

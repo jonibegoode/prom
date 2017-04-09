@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@ErpBundle/Resources/config/services.yml" }
+    - { resource: "@UserBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -39,6 +40,10 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+
+    form_themes:
+        - 'bootstrap_3_layout.html.twig'
+        - 'VichUploaderBundle:Form:fields.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -101,7 +106,40 @@ fos_rest:
         include_format:  false
     format_listener:
         rules:
-            - { path: ^/apis, priorities: [ json, jsonp ], fallback_format: ~, prefer_extension: true }
-            - { path: '^/', stop: true }
+            - { path: ^/api, priorities: [ json, jsonp ], fallback_format: ~, prefer_extension: true }
+            - { path: ^/, stop: true }
+            - { path: ^/login, stop: true }
     exception:
         enabled: true
+
+# FOS USER Bundle
+fos_user:
+    db_driver:     orm                       # Le type de BDD à utiliser
+    firewall_name: main                      # Le nom du firewall derrière lequel on utilisera ces utilisateurs
+    user_class:    UserBundle\Entity\User    # La classe de l'entité User que nous utilisons
+    from_email:
+            address: you@example.com
+            sender_name: You
+
+# Assetic
+assetic:
+  debug:          '%kernel.debug%'
+  use_controller: true
+  filters:
+        cssrewrite: ~
+
+# Vich Uploader
+vich_uploader:
+    db_driver: orm
+    mappings:
+        trialimage_image:
+            uri_prefix:         /promovert/web/images
+            upload_destination: '%kernel.root_dir%/../web/images'
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+
+
+
+

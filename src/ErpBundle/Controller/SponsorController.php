@@ -7,7 +7,7 @@ use FOS\RestBundle\Routing\ClassResourceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class DataController extends FOSRestController implements ClassResourceInterface
+class SponsorController extends FOSRestController implements ClassResourceInterface
 {
 
     public function listAction()

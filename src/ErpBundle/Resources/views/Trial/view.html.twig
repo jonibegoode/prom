@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}promo-vert{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        {% stylesheets 'bundles/erp/css/style.css' filter="cssrewrite" %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+        {% endstylesheets %}
+    {% endblock %}
+</head>
+
+<body>
+
+<nav class="navbar navbar-light bg-faded">
+    <a class="navbar-brand" href="{{ path('erp_homepage') }}">HOME</a>
+    <ul class="nav navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Trials <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Protocols</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Planning</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">PGE</a>
+    </li>
+    </ul>
+</nav>
+
+<div id="custom-search-input">
+    <div class="input-group col-md-12">
+        <input type="text" class="search-query form-control" placeholder="Search"/>
+        <span class="input-group-btn">
+	            <button class="btn btn-danger" type="button">
+	                <span class=" glyphicon glyphicon-search"></span>
+	            </button>
+	        </span>
+    </div>
+</div>
+
+{{ form(form) }}
+
+<h1>Essai<span id="green"> 17E FCUISK SP01</span></h1>
+
+<div class="master">
+
+    <div class="main-wrapper">
+
+        <div class="wrapper">
+
+            <div class="section" id="first-s">
+                <p>Main Information</p>
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+
+            <div class="field-groups">
+                <div class="field-group">
+                    <div class="field">Protocol:</div>
+                    <div class="value">17E FCUISK B01</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">code:</div>
+                    <div class="value">17E FCUISK SP01</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Sponsor:</div>
+                    <div class="value">ISK BIOSCIENCES</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Country:</div>
+                    <div class="value">Spain</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Responsible:</div>
+                    <div class="value">Marcos Lora</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Technician:</div>
+                    <div class="value">Raúl cozano</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">State:</div>
+                    <div class="value">Pendiente de Comienzo</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Experimental Product:</div>
+                    <div class="value">IBE 4022</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Kind of Trial:</div>
+                    <div class="value">F-Fungicide</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Crop:</div>
+                    <div class="value">CU-CUCURBITS</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Setting date:</div>
+                    <div class="value">17/01/2017</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Country of Trial:</div>
+                    <div class="value">Spain</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">CRO:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Effective Date:</div>
+                    <div class="value">21/03/2017</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Confirmado CRO:</div>
+                    <div class="value">NO</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Quotation confirmed:</div>
+                    <div class="value">NO</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Invoiced First 50%:</div>
+                    <div class="value">YES</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Farmer compensation:</div>
+                    <div class="value">600</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Area/Village:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Poligon:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Parcela:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Anex V:</div>
+                    <div class="value">NO</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Prevision for Starting Date:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Prevision for Finish Date:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Estimated date for Draft:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Date to send Draft:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Report available:</div>
+                    <div class="value">NO</div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Date Report sent:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="field-group">
+                    <div class="field">Final Report Shippment confirmed:</div>
+                    <div class="value">NO</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="wrapper" id="map-w">
+
+            <div class="section" id="map-s">
+                <p>Map</p>
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+
+            <div class="trial-location">
+                <iframe width="600" height="450" frameborder="0" style="border:0"
+                        src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJnY3tlZhy5kcRcnujmyShlUc&key=AIzaSyD5Wgt4AW-Nxx_f_85uiawBlF6FOXk84Qs"
+                        allowfullscreen></iframe>
+            </div>
+
+            <div class="coordinates">Longitud: 42°7'40.09"N Latitud: 32°8'20.07"O</div>
+
+        </div>
+
+    </div>
+
+    <div class="wrapper">
+        <div class="section" id="intervention">
+            <p>Interventions</p>
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+        </div>
+
+        <div class="tab-wrapper">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Technician</th>
+                    <th>Kind of activity</th>
+                    <th>Name</th>
+                    <th>Expected date</th>
+                    <th>Parent activity</th>
+                    <th>Date of performance</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>John Soe</td>
+                    <td>Application</td>
+                    <td>Application A</td>
+                    <td>12/12/2012</td>
+                    <td>1</td>
+                    <td>12/12/2012</td>
+                </tr>
+                <tr>
+                    <td>John Soe</td>
+                    <td>Application</td>
+                    <td>Application A</td>
+                    <td>12/12/2012</td>
+                    <td>1</td>
+                    <td>12/12/2012</td>
+                </tr>
+                <tr>
+                    <td>John Soe</td>
+                    <td>Application</td>
+                    <td>Application A</td>
+                    <td>12/12/2012</td>
+                    <td>1</td>
+                    <td>12/12/2012</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="wrapper" id="file-wrapper">
+        <div class="section" id="files">
+            <p>Files</p>
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+        </div>
+
+        <div class="flexwrap">
+
+            <div class="protoarm">
+
+                <div class="arm-file">
+
+                    <div class="last-arm-file">
+                        <h4>Last ARM File (read only)</h4>
+                        <ul class="arm">
+                            <li>armfile.arm</li>
+                            <li>12/12/2012</li>
+                            <li><i class="fa fa-download" aria-hidden="true"></i></li>
+                        </ul>
+                    </div>
+
+                    <div class="working-arm-file">
+                        <h4>Working ARM file</h4>
+                        <ul class="arm">
+                            <li>armfile.arm</li>
+                            <li>12/12/2012</li>
+                            <li><i class="fa fa-download" aria-hidden="true"></i></li>
+                        </ul>
+                    </div>
+
+                    <label class="control-label">Upload ARM File</label>
+                    <input type="file" class="filestyle" data-icon="false">
+
+                </div>
+
+                <div class="arm-file">
+
+                    <h4>Protocoles</h4>
+                    <ul class="arm">
+                        <li>protocoleV2.pdf</li>
+                        <li>12/12/2012</li>
+                        <li><i class="fa fa-download" aria-hidden="true"></i></li>
+                    </ul>
+                    <ul class="arm">
+                        <li>protocoleV1.pdf</li>
+                        <li>12/12/2012</li>
+                        <li><i class="fa fa-download" aria-hidden="true"></i></li>
+                    </ul>
+                    <label class="control-label">Upload protocol File</label>
+                    <input type="file" class="filestyle" data-icon="false">
+                </div>
+
+
+            </div>
+
+            <div class="wrapper-p">
+
+                <div class="sect" id="picture-section">
+                    <p>Photos</p>
+                </div>
+                <div class="photos">
+                    <div class="photo1"><img src="images/antilimacos4.jpg" alt=""></div>
+                    <div class="photo1"><img src="images/fungicidas3.jpg" alt=""></div>
+                    <div class="photo1"><img src="images/herbicidas1.jpg" alt=""></div>
+                    <div class="photo1"><img src="images/herbicidas2.jpg" alt=""></div>
+                    <div class="photo1"><img src="images/herbicidas3.jpg" alt=""></div>
+                    <div class="photo1"><img src="images/herbicidas6.jpg" alt=""></div>
+                    <div class="photo1"><img src="images/insecticidas2.jpg" alt=""></div>
+                    <div class="photo1"><img src="images/insecticidas8.jpg" alt=""></div>
+                    <div class="photo1"><img src="images/nematicidas6.jpg" alt=""></div>
+                </div>
+
+                <label class="control-label">Add a new picture</label>
+                <input type="file" class="filestyle" data-icon="false">
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="wrapper">
+        <div class="section" id="discussion">
+            <p>Messages</p>
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+        </div>
+
+        <div class="message-container">
+            <ul class="message-list">
+                <li class="message">
+                    <div class="message-box">
+                        <div class="message-head">
+                            <span class="message-name by-author">Jon Doe</span>
+                            <span>10 minutes ago</span>
+                            <i class="fa fa-reply"></i>
+                        </div>
+                        <div class="message-content">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure
+                            laudantium vitae, praesentium optio, sapiente distinctio illo?
+                        </div>
+                    </div>
+                </li>
+
+                <li class="message">
+                    <div class="message-box message-2">
+                        <div class="message-head">
+                            <span class="message-name by-author">Jon Doe</span>
+                            <span>10 minutes ago</span>
+                            <i class="fa fa-reply"></i>
+                        </div>
+                        <div class="message-content">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure
+                            laudantium vitae, praesentium optio, sapiente distinctio illo?
+                        </div>
+                    </div>
+                </li>
+
+                <li class="message">
+                    <div class="message-box">
+                        <div class="message-head">
+                            <span class="message-name by-author">Jon Doe</span>
+                            <span>10 minutes ago</span>
+                            <i class="fa fa-reply"></i>
+                        </div>
+                        <div class="message-content">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure
+                            laudantium vitae, praesentium optio, sapiente distinctio illo?
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+    <p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
+</footer>
+</div>
+
+{% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,329 @@
+body{
+    background: #FAFAFA;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+h1{
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 75px;
+    text-align: center;
+}
+
+h4{
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;    
+    width: 80%;
+    margin: 0 auto;
+}
+
+.wrap{
+    width: 24%;
+    background: #FFFFFF;
+    -moz-box-shadow: 1px 1px 5px 0px #656565;
+-webkit-box-shadow: 1px 1px 5px 0px #656565;
+-o-box-shadow: 1px 1px 5px 0px #656565;
+box-shadow: 1px 1px 5px 0px #656565;
+filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=5);
+    margin-right: 2%;
+    margin-bottom: 6em;
+    padding-bottom: 40px;
+    padding-top: 10px;
+}
+
+.fa-9x, .wrap>p{
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+} 
+
+p{
+    display: block;
+    margin: 0;
+}
+.fa-9x, #green{
+    color: #90C786;
+}
+
+.fa-9x{
+    font-size: 200px;
+}
+
+#custom-search-input {
+        margin:0 auto;
+        margin-top: 10px;
+        margin-bottom: 75px;
+        padding: 0;
+        width: 80%;
+    }
+ 
+    #custom-search-input .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 10px;
+        padding-left: 4px \9;
+        height: 50px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+ 
+        margin-bottom: 0;
+        -webkit-border-radius: 25px;
+        -moz-border-radius: 25px;
+        border-radius: 25px;
+    }
+ 
+    #custom-search-input button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color:#B9DBB8;
+    }
+ 
+    .search-query:focus + button {
+        z-index: 3;   
+    }
+
+.section{
+    font-family: 'Arvo', cursive;
+    font-size: 1.3em;
+    height: 50px;
+    background: #B9DBB8;
+    margin: 0 auto;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: space-between;
+    -ms-align-items: center;
+    align-items: center;
+    margin-bottom: 30px;
+    /*margin-top: 30px;*/
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#first-s{
+    width: 600px;
+}
+
+.master{
+    /*background: #FFFFFF*/;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.wrapper{
+    background: #FFFFFF;
+}
+
+.main-wrapper{
+    display: -webkit-inline-flex;
+    display: -moz-inline-flex;
+    display: -ms-inline-flex;
+    display: -o-inline-flex;
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+#file-wrapper{
+    padding-bottom: 50px;
+}
+
+#map-w{
+    background: none;
+}
+
+#map-s{
+    margin-bottom: 0;
+}
+
+.field-groups{
+/*     display: -webkit-flex;
+display: -moz-flex;
+display: -ms-flex;
+display: -o-flex;
+display: flex; */
+    width: 100%;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.field-group{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.field{
+    width: 250px;
+    text-decoration: underline;
+}
+.value{
+    text-align: right;
+    width: 150px;
+    margin-right: 20px;
+}
+
+.fa-chevron-down, .fa-chevron-right{
+    text-align: right;
+}
+
+.photos{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.photo1{
+    width: 140px;
+    height: 140px;
+    margin-bottom: 5px;
+}
+
+img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper-p{
+    width: 460px;
+    padding: 0 15px 15px 15px;
+    -moz-box-shadow: 2px 2px 2px 0px #656565;
+-webkit-box-shadow: 2px 2px 2px 0px #656565;
+-o-box-shadow: 2px 2px 2px 0px #656565;
+box-shadow: 2px 2px 2px 2px #656565;
+filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=2);
+
+}
+
+#picture-section{
+    margin-bottom: 10px;
+}
+
+.navbar{
+    background: #5F5F5F;
+    margin-bottom: 75px;
+}
+
+a{
+    color: #B9DBB8;
+}
+
+.navbar-brand{
+    padding-left: 120px;
+}
+
+.flexwrap{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* ARM file */
+
+.arm-file{
+    width: 410px;
+    height: 210px;
+    padding-left: 10px;
+    box-shadow: 2px 2px 2px 2px #656565;
+    margin-bottom: 60px;
+
+}
+
+.arm{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    padding: 5px;
+}
+
+li{
+    list-style-type: none; 
+}
+
+.arm>li{
+    margin-right: 70px;
+}
+
+
+/* Discussion */
+
+#discussion{
+    margin-top: 50px;
+}
+
+.message-head{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    margin-bottom: 7px;
+}
+
+h5{
+    margin: 0;
+}
+
+span{
+    margin-right: 20px;
+}
+
+.fa-reply{
+    padding-top: 4px;
+}
+
+.message-content{
+    width: 500px;
+    margin-bottom: 10px;
+}
+
+.message-2 {
+    margin-left: 100px;
+}
+
+.message-2>.message-content{
+    margin-bottom: 15px;
+}
+
+.tab-wrapper{
+    width: 90%;
+    margin: 0 auto;
+}

@@ -1,3 +1,3 @@
 erp_data:
-    type: rest
+    type: annotation
     resource: ErpBundle\Controller\ApiController

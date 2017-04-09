@@ -6,8 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    public function indexAction()
     {
-        return $this->render('', array('name' => $name));
+        return $this->render('ErpBundle:Default:index.html.twig');
     }
 }
