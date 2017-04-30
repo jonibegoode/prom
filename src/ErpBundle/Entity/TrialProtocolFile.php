@@ -2,16 +2,16 @@
 
 namespace ErpBundle\Entity;
 
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * @ORM\Entity
  * @Vich\Uploadable
  */
-class Trialimage
+class TrialProtocolFile
 {
 
     /**
@@ -32,25 +32,25 @@ class Trialimage
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="trialimage_image", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="trialprotocol_protocol", fileNameProperty="protocolName", size="protocolSize")
      *
      * @var File
      */
-    private $imageFile;
+    private $protocolFile;
 
     /**
      * @ORM\Column(type="string", length=255)
      *
      * @var string
      */
-    private $imageName;
+    private $protocolName;
 
     /**
      * @ORM\Column(type="integer")
      *
      * @var integer
      */
-    private $imageSize;
+    private $protocolSize;
 
     /**
      * @ORM\Column(type="datetime")
@@ -66,15 +66,15 @@ class Trialimage
      * must be able to accept an instance of 'File' as the bundle will inject one here
      * during Doctrine hydration.
      *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $protocol
      *
-     * @return Trialimage
+     * @return Trialprotocol
      */
-    public function setImageFile(File $image = null)
+    public function setProtocolFile(File $protocol = null)
     {
-        $this->imageFile = $image;
+        $this->protocolFile = $protocol;
 
-        if ($image) {
+        if ($protocol) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTimeImmutable();
@@ -86,19 +86,19 @@ class Trialimage
     /**
      * @return File|null
      */
-    public function getImageFile()
+    public function getProtocolFile()
     {
-        return $this->imageFile;
+        return $this->protocolFile;
     }
 
     /**
-     * @param string $imageName
+     * @param string $protocolName
      *
-     * @return Trialimage
+     * @return Trialprotocol
      */
-    public function setImageName($imageName)
+    public function setProtocolName($protocolName)
     {
-        $this->imageName = $imageName;
+        $this->protocolName = $protocolName;
 
         return $this;
     }
@@ -106,19 +106,19 @@ class Trialimage
     /**
      * @return string|null
      */
-    public function getImageName()
+    public function getProtocolName()
     {
-        return $this->imageName;
+        return $this->protocolName;
     }
 
     /**
-     * @param integer $imageSize
+     * @param integer $protocolSize
      *
-     * @return Trialimage
+     * @return Trialprotocol
      */
-    public function setImageSize($imageSize)
+    public function setProtocolSize($protocolSize)
     {
-        $this->imageSize = $imageSize;
+        $this->protocolSize = $protocolSize;
 
         return $this;
     }
@@ -126,9 +126,9 @@ class Trialimage
     /**
      * @return integer|null
      */
-    public function getImageSize()
+    public function getProtocolSize()
     {
-        return $this->imageSize;
+        return $this->protocolSize;
     }
 
     public function setTrials(Trials $trials)
@@ -141,4 +141,5 @@ class Trialimage
     {
         return $this->trials;
     }
+
 }

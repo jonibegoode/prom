@@ -1,21 +1,22 @@
 <?php
 
-namespace ErpBundle\Entity;
 
+namespace ErpBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+
 /**
  * @ORM\Entity
  * @Vich\Uploadable
  */
-class Trialimage
+class TrialArmFile
 {
 
     /**
-     * @ORM\ManyToOne(targetEntity="ErpBundle\Entity\Trials")
+     * @ORM\OneToOne(targetEntity="ErpBundle\Entity\Trials")
      * @ORM\JoinColumn(nullable=false)
      */
     private $trials;
@@ -32,25 +33,25 @@ class Trialimage
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="trialimage_image", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="trialarm_arm", fileNameProperty="armName", size="armSize")
      *
      * @var File
      */
-    private $imageFile;
+    private $armFile;
 
     /**
      * @ORM\Column(type="string", length=255)
      *
      * @var string
      */
-    private $imageName;
+    private $armName;
 
     /**
      * @ORM\Column(type="integer")
      *
      * @var integer
      */
-    private $imageSize;
+    private $armSize;
 
     /**
      * @ORM\Column(type="datetime")
@@ -66,15 +67,15 @@ class Trialimage
      * must be able to accept an instance of 'File' as the bundle will inject one here
      * during Doctrine hydration.
      *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $arm
      *
-     * @return Trialimage
+     * @return Trialarm
      */
-    public function setImageFile(File $image = null)
+    public function setArmFile(File $arm = null)
     {
-        $this->imageFile = $image;
+        $this->armFile = $arm;
 
-        if ($image) {
+        if ($arm) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTimeImmutable();
@@ -86,19 +87,19 @@ class Trialimage
     /**
      * @return File|null
      */
-    public function getImageFile()
+    public function getArmFile()
     {
-        return $this->imageFile;
+        return $this->armFile;
     }
 
     /**
-     * @param string $imageName
+     * @param string $armName
      *
-     * @return Trialimage
+     * @return Trialarm
      */
-    public function setImageName($imageName)
+    public function setArmName($armName)
     {
-        $this->imageName = $imageName;
+        $this->armName = $armName;
 
         return $this;
     }
@@ -106,19 +107,19 @@ class Trialimage
     /**
      * @return string|null
      */
-    public function getImageName()
+    public function getArmName()
     {
-        return $this->imageName;
+        return $this->armName;
     }
 
     /**
-     * @param integer $imageSize
+     * @param integer $armSize
      *
-     * @return Trialimage
+     * @return Trialarm
      */
-    public function setImageSize($imageSize)
+    public function setArmSize($armSize)
     {
-        $this->imageSize = $imageSize;
+        $this->armSize = $armSize;
 
         return $this;
     }
@@ -126,9 +127,9 @@ class Trialimage
     /**
      * @return integer|null
      */
-    public function getImageSize()
+    public function getArmSize()
     {
-        return $this->imageSize;
+        return $this->armSize;
     }
 
     public function setTrials(Trials $trials)

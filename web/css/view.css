@@ -16,6 +16,7 @@ body{
 }
 
 /*generic*/
+
 .row, .col, .container{
     margin-left: auto;
     margin-right: auto;
@@ -53,10 +54,33 @@ h1{
 h4{
     padding-top: 15px;
     padding-bottom: 15px;
+    padding-left: 15px;
 }
 .header{
     justify-content:space-between;
     background-color: #90C786;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#first-header{
+    margin-top: 0;
+}
+
+/*Infos*/
+
+
+#map{
+    padding-right: 75px;
+}
+.field-group{
+    padding-right:150px;
+}
+.field{
+    font-weight: bold;
+    text-decoration: underline;
+}
+.value{
+    font-weight: bold;
 }
 
 /*Files*/

@@ -121,20 +121,27 @@ fos_user:
             address: you@example.com
             sender_name: You
 
-# Assetic
-assetic:
-  debug:          '%kernel.debug%'
-  use_controller: true
-  filters:
-        cssrewrite: ~
-
 # Vich Uploader
 vich_uploader:
     db_driver: orm
     mappings:
         trialimage_image:
-            uri_prefix:         /promovert/web/images
-            upload_destination: '%kernel.root_dir%/../web/images'
+            uri_prefix:         /promovert/web/images/
+            upload_destination: '%kernel.root_dir%/../web/images/'
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        trialarm_arm:
+            uri_prefix:         /promovert/web/arm
+            upload_destination: '%kernel.root_dir%/../web/arm'
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        trialprotocol_protocol:
+            uri_prefix:         /promovert/web/protocol
+            upload_destination: '%kernel.root_dir%/../web/protocol'
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
