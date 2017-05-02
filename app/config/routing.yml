@@ -41,6 +41,16 @@ erp_test:
     defaults:
         _controller: ErpBundle:Trial:test
 
+erp_delete_protocol:
+    path: /TrialProtocolFile/{id}
+    defaults:
+        _controller: ErpBundle:Trial:delete
+
+erp_download_arm:
+    path: /TrialArmFile/{id}
+    defaults:
+        _controller: ErpBundle:Trial:downloadarm
+
 #API
 
 api:
@@ -67,3 +77,8 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
+#crud operations
+erp_protocol:
+    type: annotation
+    resource: ErpBundle\Controller\TrialProtocolFileController

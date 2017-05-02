@@ -5,6 +5,7 @@ namespace ErpBundle\Controller;
 use ErpBundle\Entity\Trial;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\View\View;
@@ -55,6 +56,15 @@ class TrialApiController extends FOSRestController
         $gTheme = $request->get('g_theme');
         $gCrop = $request->get('g_crop');
         $gPathogen = $request->get('g_pathogen');
+        $pClReceivedDate = $request->get('p_cl_received_date');
+        $pClArmReceived = $request->get('p_cl_arm_received');
+        $pPvArmContractInfo = $request->get('p_pv_arm_contract_info');
+        $pPermitDerogationCl = $request->get('p_permit_derogation_cl');
+        $pDerogationPvDate = $request->get('p_derogation_pv_date');
+        $pOfficialDeclarationDate = $request->get('p_official_declaration_date');
+        $pPvVersionSent = $request->get('p_pv_version_sent');
+        $pPvVersionSentDate = $request->get('p_pv_version_sent_date');
+        $pTechSentDate = $request->get('p_tech_sent_date');
 
         $data->setGProjectManager($gProjectManager);
         $data->setGDepartement($gDepartement);
@@ -76,6 +86,15 @@ class TrialApiController extends FOSRestController
         $data->setGTheme($gTheme);
         $data->setGCrop($gCrop);
         $data->setGPathogen($gPathogen);
+        $data->setPClReceivedDate($pClReceivedDate);
+        $data->setPClArmReceived($pClArmReceived);
+        $data->setPPvArmContractInfo($pPvArmContractInfo);
+        $data->setPPermitDerogationCl($pPermitDerogationCl);
+        $data->setPDerogationPvDate($pDerogationPvDate);
+        $data->setPOfficialDeclarationDate($pOfficialDeclarationDate);
+        $data->setPPvVersionSent($pPvVersionSent);
+        $data->setPPvVersionSentDate($pPvVersionSentDate);
+        $data->setPTechSentDate($pTechSentDate);
 
 
 
@@ -86,8 +105,9 @@ class TrialApiController extends FOSRestController
         $em->flush();
 
         $lastid = $data->getId();
+
         $view = View::create(array("newid" => $lastid, "id" => $id, "status" => "success"));
-        return $this->viewHandler->handle($view);
+        return $this->handleView($view);
     }
 
     /**
@@ -116,6 +136,15 @@ class TrialApiController extends FOSRestController
         $gTheme = $request->get('g_theme');
         $gCrop = $request->get('g_crop');
         $gPathogen = $request->get('g_pathogen');
+        $pClReceivedDate = $request->get('p_cl_received_date');
+        $pClArmReceived = $request->get('p_cl_arm_received');
+        $pPvArmContractInfo = $request->get('p_pv_arm_contract_info');
+        $pPermitDerogationCl = $request->get('p_permit_derogation_cl');
+        $pDerogationPvDate = $request->get('p_derogation_pv_date');
+        $pOfficialDeclarationDate = $request->get('p_official_declaration_date');
+        $pPvVersionSent = $request->get('p_pv_version_sent');
+        $pPvVersionSentDate = $request->get('p_pv_version_sent_date');
+        $pTechSentDate = $request->get('p_tech_sent_date');
 
         $sn = $this->getDoctrine()->getManager();
         $trial = $this->getDoctrine()->getRepository('ErpBundle:Trial')->find($id);
@@ -144,9 +173,20 @@ class TrialApiController extends FOSRestController
         $trial->setGTheme($gTheme);
         $trial->setGCrop($gCrop);
         $trial->setGPathogen($gPathogen);
+        $trial->setPClReceivedDate($pClReceivedDate);
+        $trial->setPClArmReceived($pClArmReceived);
+        $trial->setPPvArmContractInfo($pPvArmContractInfo);
+        $trial->setPPermitDerogationCl($pPermitDerogationCl);
+        $trial->setPDerogationPvDate($pDerogationPvDate);
+        $trial->setPOfficialDeclarationDate($pOfficialDeclarationDate);
+        $trial->setPPvVersionSent($pPvVersionSent);
+        $trial->setPPvVersionSentDate($pPvVersionSentDate);
+        $trial->setPTechSentDate($pTechSentDate);
 
         $sn->flush();
-        return new View("Sponsor Updated Successfully", Response::HTTP_OK);
+
+        $response=array("id" => $id, "status" => "success");
+        return new JsonResponse($response);
     }
 
 

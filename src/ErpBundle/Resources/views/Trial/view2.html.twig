@@ -39,7 +39,7 @@
     </ul>
 </nav>
 
-{#{{ dump() }}#}
+{{ dump() }}
 <h1>HELLO WORLD</h1>
 
 <div class="container main">
@@ -236,7 +236,8 @@
                                 {% for TrialArmFile in arm_file %}
                                     <li>{{ TrialArmFile.armName }}</li>
                                     {#<li>{{ TrialArmFile.updatedAt|date('Y-m-d') }}</li>#}
-                                    <li><i class="fa fa-download" aria-hidden="true"></i></li>
+                                    {#<li><a href="{{ vich_uploader_asset(TrialArmFile, 'armFile') }}"><i class="fa fa-download" aria-hidden="true"></i></a></li>#}
+                                    <li><a href="{{ path('erp_download_arm', { 'id': TrialArmFile.id }) }}"><i class="fa fa-download" aria-hidden="true"></i></a></li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -254,7 +255,10 @@
                                 <ul class="d-flex">
                                     <li>{{ TrialProtocolFile.protocolName }}</li>
                                     <li>12/12/2012</li>
-                                    <li><i class="fa fa-download" aria-hidden="true"></i></li>
+                                    <li><a href="{{ vich_uploader_asset(TrialProtocolFile, 'protocolFile') }}"><i class="fa fa-download" aria-hidden="true"></i></a></li>
+                                    <li><a href="{{ path('erp_delete_protocol', { 'id': TrialProtocolFile.id }) }}"><i class="fa fa-times" aria-hidden="true"></i></a></li>
+
+
                                 </ul>
                             {% endfor %}
                             {#Ici on insère le form pour l'upload des fichiers protocoles #}

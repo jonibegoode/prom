@@ -142,4 +142,29 @@ class TrialProtocolFile
         return $this->trials;
     }
 
+    public function setId($id)
+    {
+        $this->trials = $id;
+        return $this;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+
+
 }

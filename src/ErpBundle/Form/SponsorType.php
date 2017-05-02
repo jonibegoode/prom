@@ -25,7 +25,7 @@ class SponsorType extends AbstractType
             ->add('creationDate')
         ;
     }
-    
+
     /**
      * {@inheritdoc}
      */

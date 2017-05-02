@@ -8,13 +8,15 @@
 </head>
 <body>
 
+{{ dump() }}
+
 Bonjour {{ app.user.username }}
 <a href="{{ path('erp_homepage') }}">accueil</a>
 <a href="{{ path('fos_user_security_logout') }}">logout</a>
 
 <hr>
 
-<div id="test"></div>
+<div id="test" style='width:600px; height:600px'></div>
 
 <script type="text/javascript" charset="utf-8">
 
@@ -24,11 +26,8 @@ Bonjour {{ app.user.username }}
 
         var griddef = {
             view: "datatable",
-            leftSplit:2,
-            topSplit:2,
             headermenu:true,
             id: "dtable",
-            gravity:1,
             columns: [
                 {
                     id: "id",
@@ -97,13 +96,13 @@ Bonjour {{ app.user.username }}
                     sort: "string"
                 }
             ],
-
+            select: "cell",
             navigation: true,
             autoheight: true,
             autowidth: true,
-            scroll: "y",
+            editable: true,
 
-            save: "rest->{{ path('api_post') }}",
+            save: {url:"rest->{{ path('api_post') }}", autoupdate:true},
             url: "rest->{{ path('erp_api_cgetload') }}"
 
         };
@@ -136,7 +135,7 @@ Bonjour {{ app.user.username }}
                 {
                     view: "button", value: "Add row", click: function(){
                     $$('dtable').add({
-                        id:800,
+                        id:10000,
                     });
                 }
                 },
@@ -161,37 +160,30 @@ Bonjour {{ app.user.username }}
                     view: "button", label: "Export to Excel", width: 120, click: function () {
                     webix.toExcel($$("dtable"));
                 }
-                },
-                {
-                    view: "button", label: "'id' and 'name'", width: 140, click: function () {
-                    webix.toExcel($$("dtable"), {
-                        filename: "dtable",
-                        name: "sponsors",
-                        columns: {
-                            "id": {header: "id", width: 50},
-                            "name": {header: "name", width: 200}
-                        }
-                    });
-                }
                 }
             ]
 
         };
 
-        webix.ui({
+        var grid = webix.ui({
             container: 'test',
             id: "main",
             rows: [searchbar, excelexport, griddef],
         });
 
-        webix.attachEvent('unload', function(){
-            webix.storage.local.put("state", webix.UIManager.getState("main", true));
+        webix.attachEvent("unload", function(){
+            webix.storage.local.put("state", webix.UIManager.getState(grid, true));
         });
 
         var state = webix.storage.local.get("state");
-        if (state)
+
+        if(state)
             webix.UIManager.setState(state);
     });
+
+
+
+
 </script>
 
 </body>

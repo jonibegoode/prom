@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\View\View;
@@ -60,8 +61,13 @@ class ApiController extends FOSRestController
         $em->flush();
 
         $lastid = $data->getId();
+
+        /*$response=array("id" => $id, "status" => "success", "newid" => $lastid);*/
+        /*return new JsonResponse($response);*/
+
         $view = View::create(array("newid" => $lastid, "id" => $id, "status" => "success"));
-        return $this->viewHandler->handle($view);
+        return $this->handleView($view);
+
     }
 
     /**
@@ -82,18 +88,21 @@ class ApiController extends FOSRestController
         $sponsor = $this->getDoctrine()->getRepository('ErpBundle:Sponsor')->find($id);
 
         if (empty($sponsor)) {
-            return new View("user not found", Response::HTTP_NOT_FOUND);
+            return new View("Sponsor not found", Response::HTTP_NOT_FOUND);
         }
-            $sponsor->setSponsorCode($sponsorCode);
-            $sponsor->setName($name);
-            $sponsor->setCity($city);
-            $sponsor->setZipCode($zipCode);
-            $sponsor->setAddress($address);
-            $sponsor->setCountry($country);
-            $sponsor->setPhoneNumber($phoneNumber);
-            $sponsor->setEmail($email);
-            $sn->flush();
-            return new View("Sponsor Updated Successfully", Response::HTTP_OK);
+        $sponsor->setSponsorCode($sponsorCode);
+        $sponsor->setName($name);
+        $sponsor->setCity($city);
+        $sponsor->setZipCode($zipCode);
+        $sponsor->setAddress($address);
+        $sponsor->setCountry($country);
+        $sponsor->setPhoneNumber($phoneNumber);
+        $sponsor->setEmail($email);
+        $sn->flush();
+
+        $response=array("id" => $id, "status" => "success");
+
+        return new JsonResponse($response);
     }
 
 
@@ -114,4 +123,5 @@ class ApiController extends FOSRestController
         }
         return new View("deleted successfully", Response::HTTP_OK);
     }
+
 }

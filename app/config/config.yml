@@ -107,6 +107,7 @@ fos_rest:
     format_listener:
         rules:
             - { path: ^/api, priorities: [ json, jsonp ], fallback_format: ~, prefer_extension: true }
+            - { path: ^/api_t, priorities: [ json, jsonp ], fallback_format: ~, prefer_extension: true }
             - { path: ^/, stop: true }
             - { path: ^/login, stop: true }
     exception:
@@ -128,6 +129,7 @@ vich_uploader:
         trialimage_image:
             uri_prefix:         /promovert/web/images/
             upload_destination: '%kernel.root_dir%/../web/images/'
+            directory_namer:    id.directory_namer
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
@@ -135,6 +137,7 @@ vich_uploader:
         trialarm_arm:
             uri_prefix:         /promovert/web/arm
             upload_destination: '%kernel.root_dir%/../web/arm'
+            directory_namer:    id.directory_namer
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
@@ -142,6 +145,7 @@ vich_uploader:
         trialprotocol_protocol:
             uri_prefix:         /promovert/web/protocol
             upload_destination: '%kernel.root_dir%/../web/protocol'
+            directory_namer:    id.directory_namer
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true

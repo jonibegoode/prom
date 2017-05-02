@@ -24,14 +24,14 @@ class Sponsor
     /**
      * @var string
      *
-     * @ORM\Column(name="sponsor_code", type="string", length=3)
+     * @ORM\Column(name="sponsor_code", type="string", length=3, nullable=true)
      */
     private $sponsorCode;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
 

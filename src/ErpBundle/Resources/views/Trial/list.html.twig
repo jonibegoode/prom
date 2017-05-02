@@ -18,15 +18,15 @@ Bonjour {{ app.user.username }}
 
 <script type="text/javascript">
     var searchbar = {
-        view:"text",
-        placeholder:"Type something to filter the grid",
-        on:{
-            onTimedKeyPress:function(){
+        view: "text",
+        placeholder: "Type something to filter the grid",
+        on: {
+            onTimedKeyPress: function () {
                 var text = this.getValue().toLowerCase();
                 var table = $$("dtable");
                 var columns = table.config.columns;
-                table.filter(function(obj){
-                    for (var i=0; i<columns.length; i++)
+                table.filter(function (obj) {
+                    for (var i = 0; i < columns.length; i++)
                         if (obj[columns[i].id].toString().toLowerCase().indexOf(text) !== -1) return true;
                     return false;
                 })
@@ -36,202 +36,271 @@ Bonjour {{ app.user.username }}
     var griddef = {
         view: "datatable",
         id: "dtable",
-        leftSplit:4,
-        headermenu:true,
+        headermenu: true,
         columns: [
+
             {
-                id: "id",
-                editor: "text",
-                header: ["id",
-                    {content: "textFilter"}],
-                width: 50,
-                sort: "int"
-            },
-            { id:"g_project_manager", header:[
-                { content:"columnGroup", closed:false, batch:"main",
-                    groupText:"main information", colspan:20, width: 120},
-                "Project Manager", {content:"textFilter"}
-            ]},
-            /*{
                 id: "g_project_manager",
+                header: [{
+                    content: "columnGroup",
+                    closed: false,
+                    batch: "main",
+                    groupText: "main information",
+                    colspan: 20,
+                    width: 200
+                }, "Project Manager", {content: "textFilter"}],
                 editor: "text",
-                header: ["Project Manager", {content: "textFilter"}],
-                width: 80,
+                width: 150,
                 sort: "string"
-            },*/
+            },
             {
                 id: "g_departement",
-                batch:"main",
+                batch: "main",
                 editor: "text",
                 header: [null, "Zip Code", {content: "textFilter"}],
-                width: 300,
+                width: 80,
                 sort: "int"
             },
             {
                 id: "g_country",
-                batch:"main",
+                batch: "main",
                 editor: "text",
                 header: [null, "Country", {content: "textFilter"}],
-                width: 80,
+                width: 120,
                 sort: "string"
             },
-
-            /*{ id:"g_technician", header:[
-                { content:"columnGroup", closed:false, batch:"main",
-                    groupText:"main information", colspan:6, width: 120},
-                "technician", {content:"textFilter"}
-            ]},*/
             {
                 id: "g_technician",
-                batch:"main",
+                batch: "main",
                 editor: "text",
                 header: [null, "Technician", {content: "textFilter"}],
-                width: 200,
+                width: 150,
                 sort: "string"
             },
-
-
-
             {
                 id: "g_cofrac_code",
-                batch:"main",
+                batch: "main",
                 editor: "text",
-                header: [null, "Cofrac Code", {content: "selectFilter"}],
-                width: 200,
+                header: [null, "Cofrac", {content: "selectFilter"}],
+                width: 60,
                 sort: "string"
             },
             {
                 id: "g_year",
-                batch:"main",
+                batch: "main",
                 editor: "text",
                 header: [null, "Year", {content: "textFilter"}],
-                width: 100,
+                width: 60,
                 sort: "int"
             },
             {
                 id: "g_efip",
-                batch:"main",
-                editor: "text",
-                header: [null, "EFIP", {content: "textFilter"}],
-                width: 100,
+                batch: "main",
+                editor: "multiselect",
+                optionslist: true,
+                options: [
+                    {id: 1, value: "E"},
+                    {id: 2, value: "F"},
+                    {id: 3, value: "I"},
+                    {id: 4, value: "P"}
+                ],
+                header: [null, "EFIP", {content: "selectFilter"}],
+                width: 50,
                 sort: "string"
             },
             {
                 id: "g_hfieds",
-                batch:"main",
+                batch: "main",
                 editor: "text",
-                header: [null, "HFIEDS", {content: "textFilter"}],
-                width: 200,
+                header: [null, { text:"HFIEDS", rotate:true}, {content: "selectFilter"}],
+                width: 65,
                 sort: "string"
             },
             {
                 id: "g_crop_code",
-                batch:"main",
+                batch: "main",
                 editor: "text",
-                header: [null, "Crop Code", {content: "textFilter"}],
-                width: 200,
+                header: [null, "Crop Code", {content: "selectFilter"}],
+                width: 60,
                 sort: "string"
             },
             {
                 id: "g_sponsor",
-                batch:"main",
+                batch: "main",
                 editor: "text",
                 header: [null, "Sponsor", {content: "textFilter"}],
-                width: 200,
+                width: 150,
                 sort: "string"
             },
             {
                 id: "g_bps",
-                batch:"main",
+                batch: "main",
                 editor: "text",
-                header: [null, "BPS", {content: "textFilter"}],
-                width: 200,
+                header: [null, "BPS", {content: "selectFilter"}],
+                width: 50,
                 sort: "string"
             },
             {
                 id: "g_protocol_number",
-                batch:"main",
+                batch: "main",
                 editor: "text",
                 header: [null, "Protocole Code", {content: "textFilter"}],
-                width: 200,
+                width: 150,
                 sort: "string"
             },
             {
                 id: "g_trial_number",
-                batch:"main",
+                batch: "main",
                 editor: "text",
                 header: [null, "Trial Code", {content: "textFilter"}],
-                width: 200,
+                width: 150,
                 sort: "string"
             },
             {
                 id: "g_sponsor_contact",
-                batch:"main",
+                batch: "main",
                 editor: "text",
                 header: [null, "Sponsor Contact", {content: "textFilter"}],
-                width: 200,
+                width: 150,
                 sort: "string"
             },
             {
                 id: "g_sponsor_protocol_number",
-                batch:"main",
+                batch: "main",
                 editor: "text",
                 header: [null, "Sponsor Protocol Code", {content: "textFilter"}],
-                width: 200,
+                width: 150,
                 sort: "string"
             },
             {
                 id: "g_sponsor_trial_number",
-                batch:"main",
+                batch: "main",
                 editor: "text",
                 header: [null, "Sponsor Trial Code", {content: "textFilter"}],
-                width: 200,
+                width: 150,
                 sort: "string"
             },
             {
                 id: "g_declaration_number",
-                batch:"main",
+                batch: "main",
                 editor: "text",
                 header: [null, "Declaration Number", {content: "textFilter"}],
-                width: 200,
+                width: 150,
                 sort: "string"
             },
             {
                 id: "g_theme",
-                batch:"main",
+                batch: "main",
                 editor: "text",
                 header: [null, "Theme", {content: "textFilter"}],
-                width: 200,
+                width: 120,
                 sort: "string"
             },
             {
                 id: "g_crop",
-                batch:"main",
+                batch: "main",
                 editor: "text",
                 header: [null, "Crop", {content: "textFilter"}],
-                width: 200,
+                width: 120,
                 sort: "string"
             },
             {
                 id: "g_pathogen",
-                batch:"main",
+                batch: "main",
                 editor: "text",
                 header: [null, "Pathogen", {content: "textFilter"}],
+                width: 150,
+                sort: "string"
+            },
+
+            {
+                id: "p_cl_received_date",
+                header: [{
+                    content: "columnGroup",
+                    closed: false,
+                    batch: "protocol",
+                    groupText: "Protocol",
+                    colspan: 9,
+                    width: 200
+                }, "CL Received Date", {content: "dateFilter"}],
+                editor: "date",
+                width: 150,
+                sort: "date"
+            },
+            {
+                id: "p_cl_arm_received",
+                batch: "protocol",
+                editor: "checkbox",
+                header: [null, "CL ARM Received", {content: "selectFilter"}],
+                width: 150,
+                sort: "string"
+            },
+            {
+                id: "p_pv_arm_contract_info",
+                batch: "protocol",
+                editor: "checkbox",
+                header: [null, "PV+ARM+Fiche contrat+fiche info", {content: "selectFilter"}],
                 width: 200,
                 sort: "string"
-            }
+            },
+            {
+                id: "p_permit_derogation_cl",
+                batch: "protocol",
+                editor: "checkbox",
+                header: [null, "Permis+Dérogation CL", {content: "selectFilter"}],
+                width: 150,
+                sort: "string"
+            },
+            {
+                id: "p_derogation_pv_date",
+                batch: "protocol",
+                editor: "date",
+                header: [null, "Derogation PV Date", {content: "dateFilter"}],
+                width: 150,
+                sort: "date"
+            },
+            {
+                id: "p_official_declaration_date",
+                batch: "protocol",
+                editor: "date",
+                header: [null, "Official Declaration Date", {content: "dateFilter"}],
+                width: 150,
+                sort: "date"
+            },
+            {
+                id: "p_pv_version_sent",
+                batch: "protocol",
+                editor: "text",
+                header: [null, "PV version sent", {content: "selectFilter"}],
+                width: 150,
+                sort: "string"
+            },
+            {
+                id: "p_pv_version_sent_date",
+                batch: "protocol",
+                editor: "date",
+                header: [null, "PV version sent date", {content: "dateFilter"}],
+                width: 200,
+                sort: "date"
+            },
+            {
+                id: "p_tech_sent_date",
+                batch: "protocol",
+                editor: "date",
+                header: [null, "Techn sent date", {content: "dateFilter"}],
+                width: 150,
+                sort: "date"
+            },
 
         ],
 
         editable: true,
         select: "cell",
-        blockselect:true,
-        multiselect:true,
+        blockselect: true,
+        multiselect: true,
         navigation: true,
-
         autoheight: true,
         autowidth: true,
-        scroll: "y",
 
 
         save: "rest->{{ path('api_post_t') }}",
@@ -244,59 +313,57 @@ Bonjour {{ app.user.username }}
         paddingY: 5,
         paddingX: 10,
         cols: [
+            /*{
+                view: "label",
+                label: "options",
+                width: 200
+            },*/
             {
-                view: "label", label: "Export"
-            },
-
-            {
-                view: "button", value: "Add row", click: function(){
-                $$('dtable').add({
-                    id:800,
-                });
-            }
-            },
-
-            {
-                view: "button", value: "Delete row", click: function(){
-                var id = $$('dtable').getSelectedId();
-                if (id)
-                    $$('dtable').remove(id);
-            }
-            },
-
-
-            {
-                view: "button", value: "Export to PDF", autowidth: true, click: function () {
-                webix.toPDF($$("dtable"), {
-                    autowidth: true,
-                });
-            }
+                view: "button",
+                value: "Add row",
+                width: 80,
+                click: function () {
+                    $$('dtable').add({
+                        id: 10000,
+                    });
+                }
             },
             {
-                view: "button", label: "Export to Excel", width: 120, click: function () {
-                webix.toExcel($$("dtable"));
-            }
+                view: "button",
+                value: "Delete row",
+                width: 80,
+                click: function () {
+                    var id = $$('dtable').getSelectedId();
+                    if (id)
+                        $$('dtable').remove(id);
+                }
             },
             {
-                view: "button", label: "'id' and 'name'", width: 140, click: function () {
-                webix.toExcel($$("dtable"), {
-                    filename: "dtable",
-                    name: "sponsors",
-                    columns: {
-                        "id": {header: "id", width: 50},
-                        "name": {header: "name", width: 200}
-                    }
-                });
-            }
-            }
+                view: "button",
+                value: "Export to PDF",
+                autowidth: true,
+                click: function () {
+                    webix.toPDF($$("dtable"), {
+                        autowidth: true,
+                    });
+                }
+            },
+            {
+                view: "button",
+                label: "Export to Excel",
+                width: 120,
+                click: function () {
+                    webix.toExcel($$("dtable"));
+                }
+            },
         ]
-
     };
 
     webix.ready(function () {
         grida = webix.ui({
             container: 'test',
             rows: [searchbar, excelexport, griddef],
+
         });
     });
 </script>

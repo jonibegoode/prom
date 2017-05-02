@@ -142,4 +142,15 @@ class TrialArmFile
     {
         return $this->trials;
     }
+
+    public function setId($id)
+    {
+        $this->trials = $id;
+        return $this;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
 }

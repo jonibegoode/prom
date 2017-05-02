@@ -1,0 +1,24 @@
+arm_index:
+    path:     /
+    defaults: { _controller: "ErpBundle:TrialArmFile:index" }
+    methods:  GET
+
+arm_show:
+    path:     /{id}/show
+    defaults: { _controller: "ErpBundle:TrialArmFile:show" }
+    methods:  GET
+
+arm_new:
+    path:     /new
+    defaults: { _controller: "ErpBundle:TrialArmFile:new" }
+    methods:  [GET, POST]
+
+arm_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ErpBundle:TrialArmFile:edit" }
+    methods:  [GET, POST]
+
+arm_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ErpBundle:TrialArmFile:delete" }
+    methods:  DELETE
