@@ -17,7 +17,7 @@ class TrialprotocolfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('protocolFile', VichFileType::class)
+            ->add('protocolFile', VichFileType::class, array('attr' => array('class' => 'inputprotocolfile sfi-js')))
             ->add('save', SubmitType::class)
         ;
     }

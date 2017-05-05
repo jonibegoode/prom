@@ -17,6 +17,23 @@ erp_sponsor:
     requirements:
         id: \d+
 
+erp_sponsor_add:
+    path: /sponsor/add/
+    defaults:
+        _controller: ErpBundle:Sponsor:add
+
+erp_sponsor_edit:
+    path: /sponsor/{id}/edit
+    defaults:
+        _controller: ErpBundle:Sponsor:edit
+    requirements:
+        id: \d+
+
+erp_sponsor_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ErpBundle:Sponsor:delete" }
+    methods:  DELETE
+
 erp_trials:
     path: /trials
     defaults:

@@ -4,13 +4,17 @@
     <title>Trials list</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href=" {{ asset('css/webix.css') }}">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ asset('js/webix.js') }}" type="text/javascript"></script>
+
 </head>
 <body>
 
 Bonjour {{ app.user.username }}
 <a href="{{ path('erp_homepage') }}">accueil</a>
 <a href="{{ path('fos_user_security_logout') }}">logout</a>
+
+{{ dump() }}
 
 <hr>
 
@@ -125,7 +129,7 @@ Bonjour {{ app.user.username }}
                 sort: "string"
             },
             {
-                id: "g_sponsor",
+                id: "g_sponsor", value: "g_sponsor.id",
                 batch: "main",
                 editor: "text",
                 header: [null, "Sponsor", {content: "textFilter"}],
@@ -359,13 +363,23 @@ Bonjour {{ app.user.username }}
         ]
     };
 
-    webix.ready(function () {
+    var coucou = webix.ready(function () {
         grida = webix.ui({
             container: 'test',
             rows: [searchbar, excelexport, griddef],
 
         });
     });
+
+    $(function(){
+        $.getJSON('{{ path('erp_trialapi_cgetload') }}', function(data) {
+            console.log(data);
+        });
+    });
+
+    var item = coucou.getItem(data)
+    console.log(item)
+
 </script>
 
 </body>

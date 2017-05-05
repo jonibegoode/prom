@@ -17,7 +17,7 @@ class TrialarmfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('armFile', VichFileType::class)
+            ->add('armFile', VichFileType::class, array('attr' => array('class' => 'inputarmfile sfi-js')))
             ->add('save', SubmitType::class)
         ;
     }

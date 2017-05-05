@@ -45,7 +45,7 @@ class Sponsor
     /**
      * @var int
      *
-     * @ORM\Column(name="zip_code", type="smallint", nullable=true)
+     * @ORM\Column(name="zip_code", type="integer", nullable=true)
      */
     private $zipCode;
 
@@ -64,9 +64,9 @@ class Sponsor
     private $country;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="phone_number", type="smallint", nullable=true)
+     * @ORM\Column(name="phone_number", type="string", length=255, nullable=true)
      */
     private $phoneNumber;
 
@@ -84,6 +84,10 @@ class Sponsor
      */
     private $creationDate;
 
+    public function __construct()
+    {
+        $this->creationDate = new \Datetime();
+    }
 
     /**
      * Get id

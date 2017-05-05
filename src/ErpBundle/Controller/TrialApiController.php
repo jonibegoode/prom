@@ -20,7 +20,43 @@ class TrialApiController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('ErpBundle:Trial');
         $trials = $repo->findAll();
-        return $trials;
+/*        $array = array();
+        foreach ($trials as $trial){
+            $array['id'] = $trial->getId();
+            $array['gProjectManager'] = $trial->getGProjectManager();
+            $array['gDepartement'] = $trial->getGDepartement();
+            $array['gCountry'] = $trial->getGCountry();
+            $array['gTechnician'] = $trial->getGTechnician();
+            $array['gCofracCode'] = $trial->getGCofracCode();
+            $array['gYear'] = $trial->getGYear();
+            $array['gEfip'] = $trial->getGEfip();
+            $array['gHfieds'] = $trial->getGHfieds();
+            $array['gCropCode'] = $trial->getGCropCode();
+            $array['gSponsor'] = $trial->getGSponsor()->getId();
+            $array['gBps'] = $trial->getGBps();
+            $array['gProtocolNumber'] = $trial->getGProtocolNumber();
+            $array['gTrialNumber'] = $trial->getGTrialNumber();
+            $array['gSponsorContact'] = $trial->getGSponsorContact();
+            $array['gSponsorProtocolNumber'] = $trial->getGSponsorProtocolNumber();
+            $array['gSponsorTrialNumber'] = $trial->getGSponsorTrialNumber();
+            $array['gDeclarationNumber'] = $trial->getGDeclarationNumber();
+            $array['gTheme'] = $trial->getGTheme();
+            $array['gCrop'] = $trial->getGCrop();
+            $array['gPathogen'] = $trial->getGPathogen();
+            $array['pClReceivedDate'] = $trial->getPClReceivedDate();
+            $array['pClArmReceived'] = $trial->getPClArmReceived();
+            $array['pPvArmContractInfo'] = $trial->getPPvArmContractInfo();
+            $array['pPermitDerogationCl'] = $trial->getPPermitDerogationCl();
+            $array['pDerogationPvDate'] = $trial->getPDerogationPvDate();
+            $array['pOfficialDeclarationDate'] = $trial->getPOfficialDeclarationDate();
+            $array['pPvVersionSent'] = $trial->getPPvVersionSent();
+            $array['pPvVersionSentDate'] = $trial->getPPvVersionSentDate();
+            $array['pTechSentDate'] = $trial->getPTechSentDate();
+        }*/
+        /*return $trials;*/
+        $view = view::create($trials);
+        $view->setFormat('json');
+        return $view;
     }
 
     public function getAction($id)
@@ -45,7 +81,7 @@ class TrialApiController extends FOSRestController
         $gEfip = $request->get('g_efip');
         $gHfieds = $request->get('g_hfieds');
         $gCropCode = $request->get('g_crop_code');
-        $gSponsor = $request->get('g_sponsor');
+        /*$gSponsor = $request->get('g_sponsor');*/
         $gBps = $request->get('g_bps');
         $gProtocolNumber = $request->get('g_protocol_number');
         $gTrialNumber = $request->get('g_trial_number');
@@ -75,7 +111,7 @@ class TrialApiController extends FOSRestController
         $data->setGEfip($gEfip);
         $data->setGHfieds($gHfieds);
         $data->setGCropCode($gCropCode);
-        $data->setGSponsor($gSponsor);
+        /*$data->setGSponsor($gSponsor);*/
         $data->setGBps($gBps);
         $data->setGProtocolNumber($gProtocolNumber);
         $data->setGTrialNumber($gTrialNumber);

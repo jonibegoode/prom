@@ -6,11 +6,13 @@ namespace ErpBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
  * @ORM\Entity
  * @Vich\Uploadable
+ * @UniqueEntity(fields={"trials"}, message="Only one ARM file is allowed")
  */
 class TrialArmFile
 {

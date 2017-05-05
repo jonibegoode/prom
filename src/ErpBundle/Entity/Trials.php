@@ -23,7 +23,6 @@ class Trials
 
     /**
      * @var string
-     *
      * @ORM\Column(name="protocole", type="string", length=255, nullable=true)
      */
     private $protocole;
@@ -36,9 +35,8 @@ class Trials
     private $code;
 
     /**
-     * @var string
      *
-     * @ORM\Column(name="sponsor", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="ErpBundle\Entity\Sponsor")
      */
     private $sponsor;
 
@@ -152,30 +150,6 @@ class Trials
     }
 
     /**
-     * Set protocole
-     *
-     * @param string $protocole
-     *
-     * @return Trials
-     */
-    public function setProtocole($protocole)
-    {
-        $this->protocole = $protocole;
-
-        return $this;
-    }
-
-    /**
-     * Get protocole
-     *
-     * @return string
-     */
-    public function getProtocole()
-    {
-        return $this->protocole;
-    }
-
-    /**
      * Set code
      *
      * @param string $code
@@ -197,30 +171,6 @@ class Trials
     public function getCode()
     {
         return $this->code;
-    }
-
-    /**
-     * Set sponsor
-     *
-     * @param string $sponsor
-     *
-     * @return Trials
-     */
-    public function setSponsor($sponsor)
-    {
-        $this->sponsor = $sponsor;
-
-        return $this;
-    }
-
-    /**
-     * Get sponsor
-     *
-     * @return string
-     */
-    public function getSponsor()
-    {
-        return $this->sponsor;
     }
 
     /**
@@ -558,5 +508,53 @@ class Trials
     {
         return $this->area;
     }
-}
 
+    /**
+     * Set protocole
+     *
+     * @param string $protocole
+     *
+     * @return Trials
+     */
+    public function setProtocole($protocole)
+    {
+        $this->protocole = $protocole;
+
+        return $this;
+    }
+
+    /**
+     * Get protocole
+     *
+     * @return string
+     */
+    public function getProtocole()
+    {
+        return $this->protocole;
+    }
+
+
+    /**
+     * Set sponsor
+     *
+     * @param \ErpBundle\Entity\Sponsor $sponsor
+     *
+     * @return Trials
+     */
+    public function setSponsor(\ErpBundle\Entity\Sponsor $sponsor = null)
+    {
+        $this->sponsor = $sponsor;
+
+        return $this;
+    }
+
+    /**
+     * Get sponsor
+     *
+     * @return \ErpBundle\Entity\Sponsor
+     */
+    public function getSponsor()
+    {
+        return $this->sponsor;
+    }
+}

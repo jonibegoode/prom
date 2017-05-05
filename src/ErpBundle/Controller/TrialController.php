@@ -2,6 +2,7 @@
 
 namespace ErpBundle\Controller;
 
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use ErpBundle\Entity\Sponsor;
 use ErpBundle\Entity\Trial;
 use ErpBundle\Entity\TrialArmFile;
@@ -29,7 +30,13 @@ class TrialController extends Controller
 {
     public function listAction()
     {
-        return $this->render('ErpBundle:Trial:list.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('ErpBundle:Trial');
+        $trials = $repo->findAll();
+
+
+
+        return $this->render('ErpBundle:Trial:list.html.twig', array('trials' => $trials));
     }
 
 
@@ -86,9 +93,18 @@ class TrialController extends Controller
                 return $this->redirectToRoute('erp_trial', array('id' => $trial->getId()));
             }
             if ($request->request->has('form2') && $form2->handleRequest($request)->isValid()) {
-                $arm->setTrials($trial);
-                $em->persist($arm);
-                $em->flush();
+                try {
+                    $arm->setTrials($trial);
+                    $em->persist($arm);
+                    $em->flush();
+
+                }
+                catch (UniqueConstraintViolationException $e){
+                    $request->getSession()->getFlashbag()->add('notice', 'Only One ARM File is allowed');
+                    return $this->redirectToRoute('erp_trial', array('id' => $trial->getId()));
+                }
+
+
 
                 return $this->redirectToRoute('erp_trial', array('id' => $trial->getId()));
             }

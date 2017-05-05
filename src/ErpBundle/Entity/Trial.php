@@ -85,9 +85,8 @@ class Trial
     private $gCropCode;
 
     /**
-     * @var string
      *
-     * @ORM\Column(name="g_sponsor", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="ErpBundle\Entity\Sponsor")
      */
     private $gSponsor;
 
@@ -773,29 +772,6 @@ class Trial
         return $this->gCropCode;
     }
 
-    /**
-     * Set gSponsor
-     *
-     * @param string $gSponsor
-     *
-     * @return Trial
-     */
-    public function setGSponsor($gSponsor)
-    {
-        $this->gSponsor = $gSponsor;
-
-        return $this;
-    }
-
-    /**
-     * Get gSponsor
-     *
-     * @return string
-     */
-    public function getGSponsor()
-    {
-        return $this->gSponsor;
-    }
 
     /**
      * Set gBps
@@ -2356,5 +2332,28 @@ class Trial
     {
         return $this->dKindOfApplication;
     }
-}
 
+    /**
+     * Set gSponsor
+     *
+     * @param \ErpBundle\Entity\Sponsor $gSponsor
+     *
+     * @return Trial
+     */
+    public function setGSponsor(\ErpBundle\Entity\Sponsor $gSponsor = null)
+    {
+        $this->gSponsor = $gSponsor;
+
+        return $this;
+    }
+
+    /**
+     * Get gSponsor
+     *
+     * @return \ErpBundle\Entity\Sponsor
+     */
+    public function getGSponsor()
+    {
+        return $this->gSponsor;
+    }
+}
