@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trialprotocolfiles list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Protocolname</th>
+                <th>Protocolsize</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trialProtocolFile in trialProtocolFiles %}
+            <tr>
+                <td><a href="{{ path('protocol_show', { 'id': trialProtocolFile.id }) }}">{{ trialProtocolFile.id }}</a></td>
+                <td>{{ trialProtocolFile.protocolName }}</td>
+                <td>{{ trialProtocolFile.protocolSize }}</td>
+                <td>{% if trialProtocolFile.updatedAt %}{{ trialProtocolFile.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('protocol_show', { 'id': trialProtocolFile.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('protocol_edit', { 'id': trialProtocolFile.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('protocol_new') }}">Create a new trialProtocolFile</a>
+        </li>
+    </ul>
+{% endblock %}

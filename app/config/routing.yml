@@ -17,6 +17,23 @@ erp_sponsor:
     requirements:
         id: \d+
 
+erp_sponsor_add:
+    path: /sponsor/add/
+    defaults:
+        _controller: ErpBundle:Sponsor:add
+
+erp_sponsor_edit:
+    path: /sponsor/{id}/edit
+    defaults:
+        _controller: ErpBundle:Sponsor:edit
+    requirements:
+        id: \d+
+
+erp_sponsor_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ErpBundle:Sponsor:delete" }
+    methods:  DELETE
+
 erp_trials:
     path: /trials
     defaults:
@@ -40,6 +57,16 @@ erp_test:
     path: /test/
     defaults:
         _controller: ErpBundle:Trial:test
+
+erp_delete_protocol:
+    path: /TrialProtocolFile/{id}
+    defaults:
+        _controller: ErpBundle:Trial:delete
+
+erp_download_arm:
+    path: /TrialArmFile/{id}
+    defaults:
+        _controller: ErpBundle:Trial:downloadarm
 
 #API
 
@@ -67,3 +94,8 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
+#crud operations
+erp_protocol:
+    type: annotation
+    resource: ErpBundle\Controller\TrialProtocolFileController

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trialprotocolfile</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ trialProtocolFile.id }}</td>
+            </tr>
+            <tr>
+                <th>Protocolname</th>
+                <td>{{ trialProtocolFile.protocolName }}</td>
+            </tr>
+            <tr>
+                <th>Protocolsize</th>
+                <td>{{ trialProtocolFile.protocolSize }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if trialProtocolFile.updatedAt %}{{ trialProtocolFile.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('protocol_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('protocol_edit', { 'id': trialProtocolFile.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

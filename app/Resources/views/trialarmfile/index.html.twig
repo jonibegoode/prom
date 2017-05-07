@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trialarmfiles list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Armname</th>
+                <th>Armsize</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trialArmFile in trialArmFiles %}
+            <tr>
+                <td><a href="{{ path('arm_show', { 'id': trialArmFile.id }) }}">{{ trialArmFile.id }}</a></td>
+                <td>{{ trialArmFile.armName }}</td>
+                <td>{{ trialArmFile.armSize }}</td>
+                <td>{% if trialArmFile.updatedAt %}{{ trialArmFile.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('arm_show', { 'id': trialArmFile.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('arm_edit', { 'id': trialArmFile.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('arm_new') }}">Create a new trialArmFile</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -13,6 +13,13 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class Trialimage
 {
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ErpBundle\Entity\Trials")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $trials;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -123,4 +130,27 @@ class Trialimage
     {
         return $this->imageSize;
     }
+
+    public function setTrials(Trials $trials)
+    {
+        $this->trials = $trials;
+        return $this;
+    }
+
+    public function getTrials()
+    {
+        return $this->trials;
+    }
+
+    public function setId($id)
+    {
+        $this->trials = $id;
+        return $this;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
 }

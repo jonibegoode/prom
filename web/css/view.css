@@ -16,6 +16,7 @@ body{
 }
 
 /*generic*/
+
 .row, .col, .container{
     margin-left: auto;
     margin-right: auto;
@@ -27,6 +28,12 @@ body{
 }
 #files ul, #discussion ul{
     list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
 }
 
 /*navbar*/
@@ -53,13 +60,40 @@ h1{
 h4{
     padding-top: 15px;
     padding-bottom: 15px;
+    padding-left: 15px;
 }
 .header{
     justify-content:space-between;
     background-color: #90C786;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#first-header{
+    margin-top: 0;
+}
+
+/*Infos*/
+
+
+#map{
+    padding-right: 75px;
+}
+.field-group{
+    padding-right:150px;
+}
+.field{
+    font-weight: bold;
+    text-decoration: underline;
+}
+.value{
+    font-weight: bold;
 }
 
 /*Files*/
+
+/*.arm-file, .protocole, .images{
+    border: 1px solid black;
+}*/
 
 #files li{
     margin-right:150px;
@@ -69,6 +103,7 @@ h4{
     height: 140px;
 }
 
+
 /*input[type="file"] {
     display: none;
 }
@@ -77,6 +112,28 @@ h4{
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
+}*/
+
+/*.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+}
+
+.inputfile:focus label,
+.inputfile label:hover {
+    background-color: red;
 }*/
 
 

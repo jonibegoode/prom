@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trials list</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href=" {{ asset('css/webix.css') }}">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ asset('js/webix.js') }}" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+
+
+
+<script type="text/javascript">
+    var data = [
+        {
+            Test: 'a',
+            g_sponsor: {
+                name: 'Sponsor 1'
+            }
+        },
+        {
+            Test: 'b',
+            g_sponsor: {
+                name: 'Sponsor 2'
+            }
+        }
+    ];
+    webix.ready(function () {
+    webix.ui({
+
+        rows: [{
+            view: 'button', value: 'test', click: function () {
+                alert(JSON.stringify($$('table').serialize()));
+            }
+        }, {
+            view: "datatable", editable: true, id: 'table',
+            scheme: {
+                $init: function (row) {
+                    row._SponsorName = (row.g_sponsor || "") && row.g_sponsor.name
+                }
+            },
+            rules: {
+                _SponsorName: function (value, row) {
+                    if (!row.g_sponsor) row.g_sponsor = {};
+                    row.g_sponsor.name = value;
+                    return true;
+                }
+            },
+            columns: [
+                {id: 'Test'},
+                {
+                    id: "_SponsorName", fillspace: true, editor: 'text'
+                }
+            ], data: data
+        }]
+    });
+    });
+</script>

@@ -17,7 +17,7 @@ class TrialimageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('imageFile', VichImageType::class)
+            ->add('imageFile', VichImageType::class, array('attr' => array('class' => 'inputimagefile sfi-js')))
             ->add('save', SubmitType::class)
         ;
     }

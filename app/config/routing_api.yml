@@ -1,3 +1,7 @@
-erp_data:
+erp_data_sponsors:
     type: annotation
     resource: ErpBundle\Controller\ApiController
+
+erp_data_trials:
+    type: annotation
+    resource: ErpBundle\Controller\TrialApiController
