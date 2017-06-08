@@ -18,7 +18,7 @@ Bonjour {{ app.user.username }}
 
 <hr>
 
-
+<div id="test"></div>
 
 <script type="text/javascript">
     var searchbar = {
@@ -128,20 +128,20 @@ Bonjour {{ app.user.username }}
                 width: 60,
                 sort: "string"
             },
-            /*{
+            {
                 id: "g_sponsor",
                 batch: "main",
                 editor: "text",
                 header: [null, "Sponsor", {content: "textFilter"}],
                 width: 150,
                 sort: "string"
-            },*/
-            {
+            },
+            /*{
                 id: "_SponsorName",
                 batch: "main",
-                fillspace:true,
-                editor:'text'
-            },
+                header: [null, "Sponsor", {content: "textFilter"}],
+                fillspace:true
+            },*/
             {
                 id: "g_bps",
                 batch: "main",
@@ -312,6 +312,19 @@ Bonjour {{ app.user.username }}
         autoheight: true,
         autowidth: true,
 
+        /*scheme: {
+            $init: function (row) {
+                row._SponsorName = (row.g_sponsor || "") && row.g_sponsor.name
+            }
+        },
+        rules: {
+            _SponsorName: function (value, row) {
+                if (!row.g_sponsor) row.g_sponsor = {};
+                row.g_sponsor.name = value;
+                return true;
+            }
+        },*/
+
         save: "rest->{{ path('api_post_t') }}",
         url: "rest->{{ path('erp_trialapi_cgetload') }}"
 
@@ -370,18 +383,7 @@ Bonjour {{ app.user.username }}
 
     /*var coucou = */webix.ready(function () {
         grida = webix.ui({
-            scheme:{
-                $init:function(row){
-                    row._SponsorName = (row.g_sponsor || "") && row.g_sponsor.name
-                }
-            },
-            rules:{
-                _SponsorName: function (value, row) {
-                    if(!row.g_sponsor) row.g_sponsor = {};
-                    row.g_sponsor.name = value;
-                    return true;
-                }
-            },
+            container: 'test',
             rows: [searchbar, excelexport, griddef],
 
 

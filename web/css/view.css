@@ -62,6 +62,14 @@ h4{
     padding-bottom: 15px;
     padding-left: 15px;
 }
+.edit{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 15px;
+}
+.edit>a{
+    color: #1c1c1c;
+}
 .header{
     justify-content:space-between;
     background-color: #90C786;

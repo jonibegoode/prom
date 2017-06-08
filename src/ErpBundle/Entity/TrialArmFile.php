@@ -12,16 +12,16 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity
  * @Vich\Uploadable
- * @UniqueEntity(fields={"trials"}, message="Only one ARM file is allowed")
+ * @UniqueEntity(fields={"trial"}, message="Only one ARM file is allowed")
  */
 class TrialArmFile
 {
 
     /**
-     * @ORM\OneToOne(targetEntity="ErpBundle\Entity\Trials")
+     * @ORM\OneToOne(targetEntity="ErpBundle\Entity\Trial")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $trials;
+    private $trial;
 
     /**
      * @ORM\Id
@@ -134,25 +134,59 @@ class TrialArmFile
         return $this->armSize;
     }
 
-    public function setTrials(Trials $trials)
+    public function setTrial(Trial $trial)
     {
-        $this->trials = $trials;
+        $this->trial = $trial;
         return $this;
     }
 
-    public function getTrials()
+    public function getTrial()
     {
-        return $this->trials;
+        return $this->trial;
     }
 
-    public function setId($id)
+/*    public function setId($id)
     {
-        $this->trials = $id;
+        $this->trial = $id;
         return $this;
     }
 
     public function getId()
     {
         return $this->id;
+    }*/
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return TrialArmFile
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

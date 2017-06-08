@@ -23,7 +23,7 @@ class SponsorController extends Controller
         $repository = $this->getDoctrine()->getManager()->getRepository('ErpBundle:Sponsor');
         $sponsor= $repository->find($id);
 
-        $list_of_trials = $em->getRepository('ErpBundle:Trials')->findBy(array('sponsor' => $sponsor)
+        $list_of_trials = $em->getRepository('ErpBundle:Trial')->findBy(array('gSponsor' => $sponsor)
         );
 
 

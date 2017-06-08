@@ -70,7 +70,6 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
-    host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
@@ -127,15 +126,15 @@ vich_uploader:
     db_driver: orm
     mappings:
         trialimage_image:
-            uri_prefix:         /promovert/web/images/
-            upload_destination: '%kernel.root_dir%/../web/images/'
+            uri_prefix:         /images
+            upload_destination: '%kernel.root_dir%/../web/images'
             directory_namer:    id.directory_namer
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
 
         trialarm_arm:
-            uri_prefix:         /promovert/web/arm
+            uri_prefix:         /arm
             upload_destination: '%kernel.root_dir%/../web/arm'
             directory_namer:    id.directory_namer
             inject_on_load:     false
@@ -143,7 +142,7 @@ vich_uploader:
             delete_on_remove:   true
 
         trialprotocol_protocol:
-            uri_prefix:         /promovert/web/protocol
+            uri_prefix:         /protocol
             upload_destination: '%kernel.root_dir%/../web/protocol'
             directory_namer:    id.directory_namer
             inject_on_load:     false

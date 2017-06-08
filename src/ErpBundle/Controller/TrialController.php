@@ -25,6 +25,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class TrialController extends Controller
 {
@@ -49,36 +50,31 @@ class TrialController extends Controller
         $protocol = new TrialProtocolFile();
         $discussion_with_sponsor = new TrialDiscussionS();
         $discussion_with_technician = new TrialDiscussionT();
+        $user_email = $this->getUser()->getEmail();
+        $trial = $this->getDoctrine()->getManager()->find('ErpBundle:Trial', $id);
+        $url = $this->get('router')->generate('erp_trial', array('id' => $trial->getId()), UrlGeneratorInterface::ABSOLUTE_URL);
 
 
         $form1 = $this->get('form.factory')->createNamed('form1', TrialimageType::class, $image);
         $form2 = $this->get('form.factory')->createNamed('form2', TrialarmfileType::class, $arm);
         $form3 = $this->get('form.factory')->createNamed('form3', TrialprotocolfileType::class, $protocol);
-        $form4 = $this->get('form.factory')->createNamed(
-            'form4',
-            TrialDiscussionSType::class,
-            $discussion_with_sponsor
-        );
-        $form5 = $this->get('form.factory')->createNamed(
-            'form5',
-            TrialDiscussionTType::class,
-            $discussion_with_technician
-        );
+        $form4 = $this->get('form.factory')->createNamed('form4', TrialDiscussionSType::class, $discussion_with_sponsor);
+        $form5 = $this->get('form.factory')->createNamed('form5', TrialDiscussionTType::class, $discussion_with_technician);
 
         $form6 = $this->get('form.factory')->createNamed('form6', DeleteProtocolType::class, $protocol);
 
 
-        $trial = $this->getDoctrine()->getManager()->find('ErpBundle:Trials', $id);
+
 
         $list_of_comments_with_sponsors = $em->getRepository('ErpBundle:TrialDiscussionS')->findBy(
-            array('trials' => $trial)
+            array('trial' => $trial)
         );
         $list_of_comments_with_technician = $em->getRepository('ErpBundle:TrialDiscussionT')->findBy(
-            array('trials' => $trial)
+            array('trial' => $trial)
         );
-        $list_of_images = $em->getRepository('ErpBundle:Trialimage')->findBy(array('trials' => $trial));
-        $arm_file = $em->getRepository('ErpBundle:TrialArmFile')->findBy(array('trials' => $trial));
-        $list_of_protocol_files = $em->getRepository('ErpBundle:TrialProtocolFile')->findBy(array('trials' => $trial));
+        $list_of_images = $em->getRepository('ErpBundle:Trialimage')->findBy(array('trial' => $trial));
+        $arm_file = $em->getRepository('ErpBundle:TrialArmFile')->findBy(array('trial' => $trial));
+        $list_of_protocol_files = $em->getRepository('ErpBundle:TrialProtocolFile')->findBy(array('trial' => $trial));
 
         if (!$trial) {
             throw new Exception('ouistiti');
@@ -86,7 +82,7 @@ class TrialController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('form1') && $form1->handleRequest($request)->isValid()) {
-                $image->setTrials($trial);
+                $image->setTrial($trial);
                 $em->persist($image);
                 $em->flush();
 
@@ -94,7 +90,7 @@ class TrialController extends Controller
             }
             if ($request->request->has('form2') && $form2->handleRequest($request)->isValid()) {
                 try {
-                    $arm->setTrials($trial);
+                    $arm->setTrial($trial);
                     $em->persist($arm);
                     $em->flush();
 
@@ -109,22 +105,30 @@ class TrialController extends Controller
                 return $this->redirectToRoute('erp_trial', array('id' => $trial->getId()));
             }
             if ($request->request->has('form3') && $form3->handleRequest($request)->isValid()) {
-                $protocol->setTrials($trial);
+                $protocol->setTrial($trial);
                 $em->persist($protocol);
                 $em->flush();
 
                 return $this->redirectToRoute('erp_trial', array('id' => $trial->getId()));
             }
             if ($request->request->has('form4') && $form4->handleRequest($request)->isValid()) {
-                $discussion_with_sponsor->setTrials($trial);
+                $discussion_with_sponsor->setTrial($trial);
                 $discussion_with_sponsor->setAuthor($user);
                 $em->persist($discussion_with_sponsor);
                 $em->flush();
+                $object = $discussion_with_sponsor->getComment()." you can go there by clicking this link ".$url;
+                $subject = "you've got a new message from promovert relative to the trial  ".$trial->getGTrialNumber();
+                $message = \Swift_Message::newInstance()
+                    ->setSubject($subject)
+                    ->setFrom('promovert.postmaster@gmail.com')
+                    ->setTo($user_email)
+                    ->setBody($object, 'text/html');
+                $this->get('mailer')->send($message);
 
                 return $this->redirectToRoute('erp_trial', array('id' => $trial->getId()));
             }
             if ($request->request->has('form5') && $form5->handleRequest($request)->isValid()) {
-                $discussion_with_technician->setTrials($trial);
+                $discussion_with_technician->setTrial($trial);
                 $discussion_with_technician->setAuthor($user);
                 $em->persist($discussion_with_technician);
                 $em->flush();
@@ -163,7 +167,7 @@ class TrialController extends Controller
 
     public function deleteAction(TrialProtocolFile $trialProtocolFile)
     {
-        $trial = $trialProtocolFile->getTrials();
+        $trial = $trialProtocolFile->getTrial();
         $em = $this->getDoctrine()->getManager();
         $em->remove($trialProtocolFile);
         $em->flush();
@@ -174,7 +178,7 @@ class TrialController extends Controller
     public function downloadarmAction(TrialArmFile $trialArmFile)
     {
         $web = $this->getParameter('web_dir');
-        $id = $trialArmFile->getTrials()->getId();
+        $id = $trialArmFile->getTrial()->getId();
         $name = $trialArmFile->getArmName();
         $response = new BinaryFileResponse($web.'/arm/'.$id.'/'.$name);
         $response->deleteFileAfterSend(true);

@@ -15,10 +15,10 @@ class TrialProtocolFile
 {
 
     /**
-     * @ORM\ManyToOne(targetEntity="ErpBundle\Entity\Trials")
+     * @ORM\ManyToOne(targetEntity="ErpBundle\Entity\Trial")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $trials;
+    private $trial;
 
     /**
      * @ORM\Id
@@ -131,27 +131,27 @@ class TrialProtocolFile
         return $this->protocolSize;
     }
 
-    public function setTrials(Trials $trials)
+    public function setTrial(Trial $trial)
     {
-        $this->trials = $trials;
+        $this->trial = $trial;
         return $this;
     }
 
-    public function getTrials()
+    public function getTrial()
     {
-        return $this->trials;
+        return $this->trial;
     }
 
-    public function setId($id)
+/*    public function setId($id)
     {
-        $this->trials = $id;
+        $this->trial = $id;
         return $this;
     }
 
     public function getId()
     {
         return $this->id;
-    }
+    }*/
 
     public function setUpdatedAt($updatedAt)
     {
@@ -167,4 +167,14 @@ class TrialProtocolFile
 
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

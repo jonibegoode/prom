@@ -2,6 +2,7 @@
 
 namespace ErpBundle\Controller;
 
+use ErpBundle\Entity\Sponsor;
 use ErpBundle\Entity\Trial;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -81,7 +82,8 @@ class TrialApiController extends FOSRestController
         $gEfip = $request->get('g_efip');
         $gHfieds = $request->get('g_hfieds');
         $gCropCode = $request->get('g_crop_code');
-        /*$gSponsor = $request->get('g_sponsor');*/
+        $sponsor = $request->get('g_sponsor');
+        $gSponsor = $this->getDoctrine()->getManager()->getRepository('ErpBundle:Sponsor')->findOneById($sponsor);
         $gBps = $request->get('g_bps');
         $gProtocolNumber = $request->get('g_protocol_number');
         $gTrialNumber = $request->get('g_trial_number');
@@ -111,7 +113,7 @@ class TrialApiController extends FOSRestController
         $data->setGEfip($gEfip);
         $data->setGHfieds($gHfieds);
         $data->setGCropCode($gCropCode);
-        /*$data->setGSponsor($gSponsor);*/
+        $data->setGSponsor($gSponsor);
         $data->setGBps($gBps);
         $data->setGProtocolNumber($gProtocolNumber);
         $data->setGTrialNumber($gTrialNumber);
@@ -161,7 +163,8 @@ class TrialApiController extends FOSRestController
         $gEfip = $request->get('g_efip');
         $gHfieds = $request->get('g_hfieds');
         $gCropCode = $request->get('g_crop_code');
-        $gSponsor = $request->get('g_sponsor');
+        $sponsor = $request->get('g_sponsor');
+        $gSponsor = $this->getDoctrine()->getManager()->getRepository('ErpBundle:Sponsor')->findOneById($sponsor);
         $gBps = $request->get('g_bps');
         $gProtocolNumber = $request->get('g_protocol_number');
         $gTrialNumber = $request->get('g_trial_number');
@@ -209,7 +212,7 @@ class TrialApiController extends FOSRestController
         $trial->setGTheme($gTheme);
         $trial->setGCrop($gCrop);
         $trial->setGPathogen($gPathogen);
-        $trial->setPClReceivedDate($pClReceivedDate);
+        $trial->setPClReceivedDate(new \DateTime($pClReceivedDate));
         $trial->setPClArmReceived($pClArmReceived);
         $trial->setPPvArmContractInfo($pPvArmContractInfo);
         $trial->setPPermitDerogationCl($pPermitDerogationCl);

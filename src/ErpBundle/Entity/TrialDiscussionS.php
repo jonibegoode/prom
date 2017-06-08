@@ -13,10 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
 class TrialDiscussionS
 {
     /**
-     * @ORM\ManyToOne(targetEntity="ErpBundle\Entity\Trials")
+     * @ORM\ManyToOne(targetEntity="ErpBundle\Entity\Trial")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $trials;
+    private $trial;
 
     /**
      * @var int
@@ -136,15 +136,14 @@ class TrialDiscussionS
         return $this->date;
     }
 
-    public function setTrials(Trials $trials)
+    public function setTrial(Trial $trial)
     {
-        $this->trials = $trials;
+        $this->trial = $trial;
         return $this;
     }
 
-    public function getTrials()
+    public function getTrial()
     {
-        return $this->trials;
+        return $this->trial;
     }
 }
-

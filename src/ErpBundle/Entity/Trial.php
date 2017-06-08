@@ -2342,7 +2342,7 @@ class Trial
      */
     public function setGSponsor(\ErpBundle\Entity\Sponsor $gSponsor = null)
     {
-        $this->gSponsor = $gSponsor;
+        $this->gSponsor =  $gSponsor;
 
         return $this;
     }

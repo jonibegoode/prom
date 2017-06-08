@@ -15,10 +15,10 @@ class Trialimage
 {
 
     /**
-     * @ORM\ManyToOne(targetEntity="ErpBundle\Entity\Trials")
+     * @ORM\ManyToOne(targetEntity="ErpBundle\Entity\Trial")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $trials;
+    private $trial;
 
     /**
      * @ORM\Id
@@ -131,26 +131,60 @@ class Trialimage
         return $this->imageSize;
     }
 
-    public function setTrials(Trials $trials)
+    public function setTrial(Trial $trial)
     {
-        $this->trials = $trials;
+        $this->trial = $trial;
         return $this;
     }
 
-    public function getTrials()
+    public function getTrial()
     {
-        return $this->trials;
+        return $this->trial;
     }
 
-    public function setId($id)
+/*    public function setId($id)
     {
-        $this->trials = $id;
+        $this->trial = $id;
         return $this;
     }
 
     public function getId()
     {
         return $this->id;
+    }*/
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Trialimage
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
 }

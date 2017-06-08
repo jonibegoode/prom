@@ -25,6 +25,24 @@ class ApiController extends FOSRestController
         return $clients;
     }
 
+    /**
+     * @Rest\Get("/api/sponsorlist/get")
+     */
+    public function cgetLoadSponsorsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('ErpBundle:Sponsor');
+        $clients = $repo->findAll();
+        $array = array();
+        foreach ($clients as $key =>$client){
+            $array[$key]['id'] = $client->getId();
+            $array[$key]['value'] = $client->getName();
+        }
+        $view = view::create($array);
+        $view->setFormat('json');
+        return $array;
+    }
+
     public function getAction($id)
     {
         return $this->getDoctrine()->getRepository('ErpBundle:Sponsor')->find($id);

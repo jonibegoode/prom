@@ -11,7 +11,7 @@ class DirectoryNamer implements DirectoryNamerInterface
 
     public function directoryName($obj, PropertyMapping $mapping)
     {
-        $id = $obj->getTrials()->getId();
+        $id = $obj->getTrial()->getId();
         return $id;
     }
 }
